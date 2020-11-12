@@ -1,0 +1,17 @@
+{
+  "name": "disneypinsdatabase",
+  "version": "1.0.0",
+  "description": "Disney Pins DataBase est une API répertoriant tout les Pins des différents parcs Disneyland",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "disney",
+    "pins",
+    "database",
+    "api"
+  ],
+  "author": "Smyllet (Dynivers)",
+  "license": "ISC"
+}
