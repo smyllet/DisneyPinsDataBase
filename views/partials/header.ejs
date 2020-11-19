@@ -1,0 +1,27 @@
+<!-- Barre de navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
+    <!-- Nom du site -->
+    <a class="navbar-brand" href="#">Disney Pins DataBase</a>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav ml-auto">
+            <!-- Page d'accueil -->
+            <li class="nav-item <%if (title === "accueil") { %>active<% } %>">
+                <a class="nav-link" href="/">Accueil</a>
+            </li>
+
+            <!-- Page de documentation -->
+            <li class="nav-item <%if (title === "documentation") { %>active<% } %>">
+                <a class="nav-link" href="#">Documentation</a>
+            </li>
+
+            <!-- Compte -->
+            <li class="nav-item avatar">
+                <a class="nav-link p-0" href="#">
+                    <img src="/image/icon/account_circle-white.svg" class="rounded-circle z-depth-0" alt="avatar image" height="40">
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

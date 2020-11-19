@@ -15,6 +15,7 @@ const app = express()
 app.use(express.json())
 app.use(bodyparser.urlencoded({extended : true}))
 app.use(express.static(path.join(__dirname, 'public'))) // Dossier accessible en public
+app.set('view engine', 'ejs')
 
 app.set('port', config.webServer.port)
 const sslOption = {key: fs.readFileSync('ssl/key.pem'), cert: fs.readFileSync('ssl/cert.pem')}
