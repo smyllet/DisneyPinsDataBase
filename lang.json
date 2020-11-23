@@ -1,0 +1,47 @@
+{
+  "global":
+  {
+    "name":
+    {
+      "fr": "Disney Pins DataBase",
+      "en": "Disney Pins DataBase"
+    },
+    "copyright":
+    {
+      "fr": "© Copyright 2020 Dynivers",
+      "en": "© Copyright 2020 Dynivers"
+    }
+  },
+  "accueil":
+  {
+    "name":
+    {
+      "fr": "Accueil",
+      "en": "Home"
+    },
+    "main":
+    {
+      "descriptionProjet":
+      {
+        "h1":
+        {
+          "fr": "Projet - Disney Pins DataBase",
+          "en": "Project - Disney Pins DataBase"
+        },
+        "p":
+        {
+          "fr": "Disney Pins DataBase est une API répertoriant tous les Pins des différents parcs Disneyland. Ce projet est en cours de réalisation et a pour objectif d'être présenté à l'épreuve E4 du BTS SIO option SLAM",
+          "en": "Disney Pins DataBase is an API which aims to list every Pin's from all Disneyland parks. This project is currently under progress, and will be presented at the E4's test from the BTS SIO, specialized in SLAM."
+        }
+      }
+    }
+  },
+  "documentation":
+  {
+    "name":
+    {
+      "fr": "Documentation",
+      "en": "Documentation"
+    }
+  }
+}

@@ -1,19 +1,19 @@
 <!-- Barre de navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark navbar-custom">
     <!-- Nom du site -->
-    <a class="navbar-brand" href="#">Disney Pins DataBase</a>
+    <a class="navbar-brand" href="#"><%=lang.global.name[navLang]%></a>
 
     <!-- Menu -->
     <div class="collapse navbar-collapse">
         <ul class="navbar-nav ml-auto">
             <!-- Page d'accueil -->
             <li class="nav-item <%if (title === "accueil") { %>active<% } %>">
-                <a class="nav-link" href="/">Accueil</a>
+                <a class="nav-link" href="/"><%=lang.accueil.name[navLang]%></a>
             </li>
 
             <!-- Page de documentation -->
             <li class="nav-item <%if (title === "documentation") { %>active<% } %>">
-                <a class="nav-link" href="#">Documentation</a>
+                <a class="nav-link" href="#"><%=lang.documentation.name[navLang]%></a>
             </li>
 
             <!-- Compte -->
