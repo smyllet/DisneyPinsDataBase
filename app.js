@@ -11,6 +11,9 @@ const config = require('./config.json')
 // - - - Instantiation de Express - - - //
 const app = express()
 
+// - - - Initialisation de la connexion à la base de donnée - - - //
+require('./model/db').connexion()
+
 // - - - Configuration du serveur WEB - - - //
 app.use(express.json())
 app.use(bodyparser.urlencoded({extended : true}))

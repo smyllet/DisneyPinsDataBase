@@ -3,5 +3,14 @@
   {
     "port": 3000,
     "address": "127.0.0.1"
+  },
+  "database":
+  {
+    "login": "",
+    "password": "",
+    "server": "127.0.0.1",
+    "port": "3306",
+    "dialect": "mysql",
+    "database": "dpdb"
   }
 }
