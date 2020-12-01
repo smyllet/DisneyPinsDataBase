@@ -40,3 +40,5 @@ server.on('listening', () => {
 // Home page
 app.use('/', require('./routes/index'))
 
+// Login page
+app.use('/', require('./routes/login'))

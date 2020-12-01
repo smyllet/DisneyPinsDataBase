@@ -1,0 +1,15 @@
+.block_center {
+    margin: 10% 25%;
+}
+.block_center img {
+    width: 0;
+    height: 0;
+}
+
+#login_form a {
+    color: #04A8E2;
+}
+
+#login_form .btn-primary {
+    background-color: #04A8E2;
+}

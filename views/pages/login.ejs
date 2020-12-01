@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.login.name[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/login.css">
+    <script src="/javascript/login.js"></script>
+</head>
+<body>
+    <!-- Haut de page -->
+    <header>
+        <%- include('../partials/header') %>
+    </header>
+
+    <!-- Contenue de la page -->
+    <main>
+        <!-- Bloc de connexion -->
+        <div class="row justify-content-center block_center">
+            <!-- Image chateau Disneyland -->
+            <img src="/image/disney_castel_1.png" alt="Chateau Disney" class="img-fluid" id="login_form_picture">
+
+            <!-- Formulaire de connexion -->
+            <form id="login_form" method="post" action="/login">
+                <!-- Titre -->
+                <h2><%=lang.login.name[navLang]%></h2>
+
+                <!-- Champ adresse mail -->
+                <div class="form-group">
+                    <label for="login_form_email"><%=lang.login.form.label.mail[navLang]%></label>
+                    <input type="email" class="form-control" id="login_form_email">
+                </div>
+
+                <!-- Champ mot de passe -->
+                <div class="form-group">
+                    <label for="login_form_password"><%=lang.login.form.label.password[navLang]%></label>
+                    <input type="password" class="form-control" id="login_form_password">
+                    <small class="form-text text-muted"><%=lang.login.form.passwordForgot.text[navLang]%> <a href="#"><%=lang.login.form.passwordForgot.button[navLang]%></a></small>
+                </div>
+
+                <!-- Bouton de connexion -->
+                <button type="submit" class="btn btn-primary"><%=lang.login.name[navLang]%></button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer>
+        <%- include('../partials/footer') %>
+    </footer>
+</body>
+</html>

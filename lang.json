@@ -43,5 +43,50 @@
       "fr": "Documentation",
       "en": "Documentation"
     }
+  },
+  "login":
+  {
+    "name":
+    {
+      "fr": "Connexion",
+      "en": "Login"
+    },
+    "form":
+    {
+      "label":
+      {
+        "mail":
+        {
+          "fr": "Adresse mail",
+          "en": "Email"
+        },
+        "password":
+        {
+          "fr": "Mot de passe",
+          "en": "Password"
+        }
+      },
+      "passwordForgot":
+      {
+        "text":
+        {
+          "fr": "Vous ne vous souvenez plus de votre mot de passe ?",
+          "en": "You forgot your password ?"
+        },
+        "button":
+        {
+          "fr": "C'est par ici",
+          "en": "Click here"
+        }
+      }
+    }
+  },
+  "register":
+  {
+    "name":
+    {
+      "fr": "Inscription",
+      "en": "Register"
+    }
   }
 }
