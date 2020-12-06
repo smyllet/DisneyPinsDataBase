@@ -1,12 +1,15 @@
 const router = require('express').Router()
+const reqAnalyser = require('../function/reqAnalyser')
 
-/* Get Index Page. */
+/* Get Index Page */
 router.get('/', function(req, res, next) {
-    let navLang = req.acceptsLanguages( 'fr', 'en')
-    if(!navLang) navLang = 'fr'
+    // Récupérer les information destiné au headers
+    let headersData = reqAnalyser.getHeadersDataFromReq(req)
+
     res.render('pages/index.ejs', {
         title: "accueil",
-        navLang : navLang
+        navLang : headersData.navLang,
+        user: headersData.user
     })
 })
 

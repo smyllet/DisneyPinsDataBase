@@ -1,6 +1,8 @@
 // - - - Import Node Module - - - //
 const https = require('https')
 const express = require('express')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
 const bodyparser = require('body-parser')
 const path = require('path')
 const fs = require('fs')
@@ -18,6 +20,12 @@ require('./model/db').connexion()
 app.use(express.json())
 app.use(bodyparser.urlencoded({extended : true}))
 app.use(express.static(path.join(__dirname, 'public'))) // Dossier accessible en public
+app.use(session({
+    secret: "c'est secret",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {secure: true}
+}))
 app.set('view engine', 'ejs')
 app.locals = {
     lang: require('./lang.json')

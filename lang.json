@@ -10,6 +10,11 @@
     {
       "fr": "© Copyright 2020 Dynivers",
       "en": "© Copyright 2020 Dynivers"
+    },
+    "navbarHello":
+    {
+      "fr": "Bonjour",
+      "en": "Hello"
     }
   },
   "accueil":
@@ -87,6 +92,30 @@
     {
       "fr": "Inscription",
       "en": "Register"
+    }
+  },
+  "profil":
+  {
+    "name":
+    {
+      "fr": "Profil",
+      "en": "Profil"
+    }
+  },
+  "settings":
+  {
+    "name":
+    {
+      "fr": "Paramètres",
+      "en": "Settings"
+    }
+  },
+  "logout":
+  {
+    "name":
+    {
+      "fr": "Déconnexion",
+      "en": "Logout"
     }
   }
 }

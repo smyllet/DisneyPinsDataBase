@@ -28,15 +28,17 @@
                 <!-- Champ adresse mail -->
                 <div class="form-group">
                     <label for="login_form_email"><%=lang.login.form.label.mail[navLang]%></label>
-                    <input type="email" class="form-control" id="login_form_email">
+                    <input type="email" class="form-control" id="login_form_email" name="login_form[mail]">
                 </div>
 
                 <!-- Champ mot de passe -->
                 <div class="form-group">
                     <label for="login_form_password"><%=lang.login.form.label.password[navLang]%></label>
-                    <input type="password" class="form-control" id="login_form_password">
+                    <input type="password" class="form-control" id="login_form_password" name="login_form[password]">
                     <small class="form-text text-muted"><%=lang.login.form.passwordForgot.text[navLang]%> <a href="#"><%=lang.login.form.passwordForgot.button[navLang]%></a></small>
                 </div>
+
+                <%if (wrongIdentity) { %><div><small class="form-text text-danger">Adresse mail ou mot de passe incorrect</small></div><br><% } %>
 
                 <!-- Bouton de connexion -->
                 <button type="submit" class="btn btn-primary"><%=lang.login.name[navLang]%></button>
