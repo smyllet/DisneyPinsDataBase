@@ -11,4 +11,10 @@ Disney Pins DataBase est une API répertoriant tous les Pins des différents par
     - create_vues
     - insert_data
 4) Renseigner les paramètres de base de donnée dans le fichier config
-5) Exécuté la commande `node app.js` à la racine du projet
+5) Dans le dossier SSL, exécuter la commande `openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out cert.pem`
+6) Exécuté la commande `node app.js` à la racine du projet
+
+## Paramètres
+Les identifiants par default sont :
+ - Identfiants : `exemple@dynivers.fr`
+ - Mot de passe : `admin1234`
