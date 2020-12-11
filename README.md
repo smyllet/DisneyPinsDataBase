@@ -11,7 +11,7 @@ Disney Pins DataBase est une API répertoriant tous les Pins des différents par
     - create_vues
     - insert_data
 4) Renseigner les paramètres de base de donnée dans le fichier config
-5) Dans le dossier SSL, exécuter la commande `openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out cert.pem`
+5) Créer un repertoire SSL à la racine, puis dans ce dossier, exécuter la commande `openssl req -newkey rsa:2048 -nodes -keyout key.pem -x509 -days 365 -out cert.pem`
 6) Exécuté la commande `npm install` à la racine du projet
 7) Toujours à la racine, exécuté la commande `node app.js`
 

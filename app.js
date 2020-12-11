@@ -50,3 +50,6 @@ app.use('/', require('./routes/index'))
 
 // Login page
 app.use('/', require('./routes/login'))
+
+// Logout page
+app.use('/',require('./routes/logout'))
