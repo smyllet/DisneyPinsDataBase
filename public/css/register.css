@@ -1,0 +1,19 @@
+.block_center {
+    margin: 10% 25%;
+}
+
+#register_form .btn-primary {
+    background-color: #04A8E2;
+}
+
+#register_form h2 {
+    text-align: center;
+}
+
+.dual-input .form-group {
+    margin: 10px;
+}
+
+.error_input {
+    border-color: red;
+}

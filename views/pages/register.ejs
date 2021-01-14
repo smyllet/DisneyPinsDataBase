@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.register.name[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/register.css">
+    <script src="/javascript/register.js"></script>
+</head>
+<body>
+<!-- Haut de page -->
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<!-- Contenue de la page -->
+<main>
+    <!-- Bloc de connexion -->
+    <div class="row justify-content-center block_center">
+        <!-- Formulaire de Inscription -->
+        <form id="register_form" method="post" action="/register" onsubmit="return valideSubmit()">
+            <!-- Titre -->
+            <h2><%=lang.register.name[navLang]%></h2>
+
+            <div class="row dual-input">
+                <!-- Champ Pseudo -->
+                <div class="form-group">
+                    <label for="register_form_pseudo"><%=lang.register.form.label.pseudo[navLang]%></label>
+                    <input type="text" class="form-control" id="register_form_pseudo" name="register_form[pseudo]" required>
+                </div>
+
+                <!-- Champ mail -->
+                <div class="form-group">
+                    <label for="register_form_mail"><%=lang.register.form.label.mail[navLang]%></label>
+                    <input type="email" class="form-control" id="register_form_mail" name="register_form[mail]" required>
+                </div>
+            </div>
+
+            <div class="row dual-input">
+                <!-- Champ FirstName -->
+                <div class="form-group">
+                    <label for="register_form_firstName"><%=lang.register.form.label.firstName[navLang]%></label>
+                    <input type="text" class="form-control" id="register_form_firstName" name="register_form[firstName]" required>
+                </div>
+
+                <!-- Champ Name -->
+                <div class="form-group">
+                    <label for="register_form_name"><%=lang.register.form.label.name[navLang]%></label>
+                    <input type="text" class="form-control" id="register_form_name" name="register_form[name]" required>
+                </div>
+            </div>
+
+            <div class="row dual-input">
+                <!-- Champ password -->
+                <div class="form-group">
+                    <label for="register_form_password"><%=lang.register.form.label.password[navLang]%></label>
+                    <input type="password" class="form-control" id="register_form_password" name="register_form[password]"  required>
+                </div>
+
+                <!-- Champ rewrite password -->
+                <div class="form-group">
+                    <label for="register_form_rewrite_password"><%=lang.register.form.label.rewrite_password[navLang]%></label>
+                    <input type="password" class="form-control" id="register_form_rewrite_password" name="register_form[rewrite_password]" required>
+                </div>
+            </div>
+
+            <small class="form-text text-danger text-center" id="register_form_error_password_message" hidden><%=lang.register.form.error.not_match_password[navLang]%></small>
+
+            <%if (error) { %><small class="form-text text-danger"><%=lang.register.form.error[error][navLang]%></small><% } %>
+
+            <br>
+
+            <!-- Bouton d'inscription -->
+            <div class="form-group col text-center">
+                <button type="submit" class="btn btn-primary row" id="register_form_submit"><%=lang.register.name[navLang]%></button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<!-- Pied de page -->
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>

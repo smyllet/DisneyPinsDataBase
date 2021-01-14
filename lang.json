@@ -83,6 +83,14 @@
           "fr": "C'est par ici",
           "en": "Click here"
         }
+      },
+      "error":
+      {
+        "invalide_identity":
+        {
+          "fr": "Adresse mail ou mot de passe incorrect",
+          "en": "Invalide login"
+        }
       }
     }
   },
@@ -92,6 +100,60 @@
     {
       "fr": "Inscription",
       "en": "Register"
+    },
+    "form":
+    {
+      "label":
+      {
+        "pseudo":
+        {
+          "fr": "Pseudo",
+          "en": "Nickname"
+        },
+        "firstName":
+        {
+          "fr": "Prénom",
+          "en": "Fist Name"
+        },
+        "name":
+        {
+          "fr": "Nom",
+          "en": "Name"
+        },
+        "mail":
+        {
+          "fr": "Adresse mail",
+          "en": "Email"
+        },
+        "password":
+        {
+          "fr": "Mot de passe",
+          "en": "Password"
+        },
+        "rewrite_password":
+        {
+          "fr": "Retaper Mot de passe",
+          "en": "Rewrite Password"
+        }
+      },
+      "error":
+      {
+        "mail_already_register":
+        {
+          "fr": "Le mail que vous avez indiqué est déjà utilisé",
+          "en": "email already use"
+        },
+        "pseudo_already_register":
+        {
+          "fr": "Le pseudo que vous avez indiqué n'est pas disponible",
+          "en": "nickname already use"
+        },
+        "not_match_password":
+        {
+          "fr": "Le mot de passe ne correspond pas",
+          "en": "Password does not match"
+        }
+      }
     }
   },
   "profil":

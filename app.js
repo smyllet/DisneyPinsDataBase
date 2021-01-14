@@ -52,4 +52,7 @@ app.use('/', require('./routes/index'))
 app.use('/', require('./routes/login'))
 
 // Logout page
-app.use('/',require('./routes/logout'))
+app.use('/', require('./routes/logout'))
+
+// Register page
+app.use('/', require('./routes/register'))

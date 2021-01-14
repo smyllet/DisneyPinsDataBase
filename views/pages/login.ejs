@@ -38,7 +38,7 @@
                     <small class="form-text text-muted"><%=lang.login.form.passwordForgot.text[navLang]%> <a href="#"><%=lang.login.form.passwordForgot.button[navLang]%></a></small>
                 </div>
 
-                <%if (wrongIdentity) { %><div><small class="form-text text-danger">Adresse mail ou mot de passe incorrect</small></div><br><% } %>
+                <%if (wrongIdentity) { %><div><small class="form-text text-danger"><%=lang.login.form.error.invalide_identity[navLang]%></small></div><br><% } %>
 
                 <!-- Bouton de connexion -->
                 <button type="submit" class="btn btn-primary"><%=lang.login.name[navLang]%></button>
