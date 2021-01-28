@@ -2,3 +2,9 @@ body {
     background-color: #282828;
     color: white;
 }
+
+footer p {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}

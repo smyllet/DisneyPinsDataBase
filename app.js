@@ -27,6 +27,7 @@ app.use(session({
     cookie: {secure: true}
 }))
 app.set('view engine', 'ejs')
+app.disable('view cache')
 app.locals = {
     lang: require('./lang.json')
 }
@@ -56,3 +57,6 @@ app.use('/', require('./routes/logout'))
 
 // Register page
 app.use('/', require('./routes/register'))
+
+// Contribution page
+app.use('/', require('./routes/contribution'))

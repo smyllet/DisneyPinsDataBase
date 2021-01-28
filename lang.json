@@ -8,8 +8,8 @@
     },
     "copyright":
     {
-      "fr": "© Copyright 2020 Dynivers",
-      "en": "© Copyright 2020 Dynivers"
+      "fr": "© Copyright 2021 Dynivers",
+      "en": "© Copyright 2021 Dynivers"
     },
     "navbarHello":
     {
@@ -49,6 +49,80 @@
       "en": "Documentation"
     }
   },
+  "contribution":
+  {
+    "name":
+    {
+      "fr": "Contribution",
+      "en": "Contribution"
+    },
+    "contribution_table":
+    {
+      "intitule":
+      {
+        "fr": "Intitulé",
+        "en": "Title"
+      },
+      "type":
+      {
+        "fr": "Type",
+        "en": "Type"
+      },
+      "contributeur":
+      {
+        "fr": "Contributeur",
+        "en": "Contributor"
+      },
+      "date":
+      {
+        "fr": "Date",
+        "en": "Date"
+      },
+      "yourContribution":
+      {
+        "fr": "Vos Contribution",
+        "en": "Your Contribution"
+      },
+      "lastContribution":
+      {
+        "fr": "Dernière contribution",
+        "en": "Last contribution"
+      },
+      "pins":
+      {
+        "fr": "Pins",
+        "en": "Pin's"
+      },
+      "serie":
+      {
+        "fr": "Collection",
+        "en": "Series"
+      }
+    },
+    "contributionZone":
+    {
+      "contribute":
+      {
+        "fr": "Contribuer",
+        "en": "Contribute"
+      },
+      "addPins":
+      {
+        "fr": "Ajouter un Pins",
+        "en": "Add a Pin's"
+      },
+      "addSerie":
+      {
+        "fr": "Ajouter une collection",
+        "en": "Add a series"
+      },
+      "signalData":
+      {
+        "fr": "Signaler une donnée manquante ou incorrecte",
+        "en": "Report a missing or wrong data"
+      }
+    }
+  },
   "login":
   {
     "name":
@@ -63,7 +137,7 @@
         "mail":
         {
           "fr": "Adresse mail",
-          "en": "Email"
+          "en": "E-mail address"
         },
         "password":
         {
@@ -75,8 +149,8 @@
       {
         "text":
         {
-          "fr": "Vous ne vous souvenez plus de votre mot de passe ?",
-          "en": "You forgot your password ?"
+          "fr": "Mot de passe oublié?",
+          "en": "Forgot password ?"
         },
         "button":
         {
@@ -88,8 +162,8 @@
       {
         "invalide_identity":
         {
-          "fr": "Adresse mail ou mot de passe incorrect",
-          "en": "Invalide login"
+          "fr": "Adresse mail et/ou mot de passe incorrect",
+          "en": "Wrong e-mail adress and/or password "
         }
       }
     }
@@ -98,7 +172,7 @@
   {
     "name":
     {
-      "fr": "Inscription",
+      "fr": "S'inscrire",
       "en": "Register"
     },
     "form":
@@ -132,7 +206,7 @@
         },
         "rewrite_password":
         {
-          "fr": "Retaper Mot de passe",
+          "fr": "Vérifier le mot de passe",
           "en": "Rewrite Password"
         }
       },
@@ -141,17 +215,17 @@
         "mail_already_register":
         {
           "fr": "Le mail que vous avez indiqué est déjà utilisé",
-          "en": "email already use"
+          "en": "This e-mail address has already been used"
         },
         "pseudo_already_register":
         {
           "fr": "Le pseudo que vous avez indiqué n'est pas disponible",
-          "en": "nickname already use"
+          "en": "This nickname isn't available"
         },
         "not_match_password":
         {
           "fr": "Le mot de passe ne correspond pas",
-          "en": "Password does not match"
+          "en": "The password does not match"
         }
       }
     }
@@ -161,7 +235,7 @@
     "name":
     {
       "fr": "Profil",
-      "en": "Profil"
+      "en": "Profile"
     }
   },
   "settings":

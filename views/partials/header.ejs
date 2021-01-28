@@ -16,6 +16,13 @@
                 <a class="nav-link" href="#"><%=lang.documentation.name[navLang]%></a>
             </li>
 
+            <!-- Page de contribution -->
+            <%if(user && user.contributor) {%>
+                <li class="nav-item <%if (title === "contribution") { %>active<% } %>">
+                    <a class="nav-link" href="/contribution"><%=lang.contribution.name[navLang]%></a>
+                </li>
+            <%}%>
+
             <!-- Compte -->
             <li class="nav-item dropdown avatar">
                 <a class="nav-link dropdown-toggle p-0" href="#" id="account_dropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

@@ -1,0 +1,23 @@
+main {
+    padding: 1% 2%;
+}
+
+#contribution_block
+{
+    width: 60%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#add_button_block
+{
+    width: 40%;
+    text-align: center;
+    padding-top: 15%;
+    padding-bottom: 15%;
+}
+
+#add_button_block button
+{
+    margin: 5px;
+}
