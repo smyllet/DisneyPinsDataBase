@@ -11,7 +11,7 @@ set @contributor_id = LAST_INSERT_ID();
 insert into Application (name, description, apiToken, account_id) VALUES ('App Test', 'Application de test de l\'api', 'BigT0kenS3cUrity',@user_id);
 
 -- Insertion des pays
-insert into Country (name) value ('Etat Unis'),('France'),('Japon'),('Chine');
+insert into Country (name) value ('Etats-Unis'),('France'),('Japon'),('Chine');
 
 -- Insertion Parcs Disneyland
 insert into Park (name, country_id) value ('Disneyland Resort', 1);
@@ -22,7 +22,7 @@ insert into Park (name, country_id) value ('Hong Kong Disneyland', 4);
 insert into Park (name, country_id) value ('Shanghai Disneyland', 4);
 
 -- Insertion Personnage
-insert into Personage (name) values ('Stitch'),('Mike'),('Sully'),('Bob'),('BayMax'),('Hero');
+insert into Personnage (name) values ('Stitch'),('Mike'),('Sully'),('Bob'),('BayMax'),('Hero');
 
 insert into Attraction (name, park_id) VALUES ('It\'s a small world', 3);
 
@@ -41,11 +41,11 @@ insert into Serie_Contributor (serie_id, contributor_id) VALUES (last_insert_id(
 insert into Pins(name, release_date, edition_number, serie_id, type_id) value ('World\'s Best Friends Mike & Sully', '2020-10-24', 700, 1, 1);
 set @pins_id = LAST_INSERT_ID();
 insert into Pins_Contributor (pins_id, contributor_id) values (@pins_id, @contributor_id);
-insert into Pins_Personage (pins_id, personage_id) VALUES (@pins_id,2),(@pins_id,3);
+insert into Pins_Personnage (pins_id, personnage_id) VALUES (@pins_id,2),(@pins_id,3);
 insert into Pins(name, release_date, edition_number, serie_id, type_id) value ('Best Friends BayMax & Hero', '2020-09-26', 700, 1, 1);
 set @pins_id = LAST_INSERT_ID();
 insert into Pins_Contributor (pins_id, contributor_id) values (@pins_id, @contributor_id);
-insert into Pins_Personage (pins_id, personage_id) VALUES (@pins_id,4),(@pins_id,5);
+insert into Pins_Personnage (pins_id, personnage_id) VALUES (@pins_id,4),(@pins_id,5);
 insert into Pins(name, release_date, edition_number, serie_id, type_id) value ('Attraction it\'s a small world', '2018-04-12', 800, 3, 1);
 set @pins_id = LAST_INSERT_ID();
 insert into Pins_Contributor (pins_id, contributor_id) values (@pins_id, @contributor_id);
