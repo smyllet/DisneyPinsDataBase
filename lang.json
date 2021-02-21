@@ -80,8 +80,8 @@
       },
       "yourContribution":
       {
-        "fr": "Vos Contribution",
-        "en": "Your Contribution"
+        "fr": "Vos contributions",
+        "en": "Your contributions"
       },
       "lastContribution":
       {
@@ -120,6 +120,187 @@
       {
         "fr": "Signaler une donnée manquante ou incorrecte",
         "en": "Report a missing or wrong data"
+      }
+    }
+  },
+  "contribute":
+  {
+    "name":
+    {
+      "fr": "Contribuer",
+      "en": "Contribute"
+    },
+    "addTitle":
+    {
+      "fr": "Contribuer",
+      "en": "Contribute"
+    },
+    "collection":
+    {
+      "name":
+      {
+        "fr": "Collection",
+        "en": "Series"
+      }
+    },
+    "pins":
+    {
+      "name":
+      {
+        "fr": "Pins",
+        "en": "Pin's"
+      },
+      "form":
+      {
+        "libelle":
+        {
+          "label":
+          {
+            "fr": "Intitulé",
+            "en": "Title"
+          },
+          "placeholder":
+          {
+            "fr": "World's Best Friends BayMax & Hero",
+            "en": "World's Best Friends BayMax & Hero"
+          }
+        },
+        "releaseDate":
+        {
+          "label":
+          {
+            "fr": "Date de sortie",
+            "en": "Release date"
+          }
+        },
+        "editionNumber":
+        {
+          "label":
+          {
+            "fr": "Nombre d'exemplaires",
+            "en": "Number of copies"
+          },
+          "placeholder":
+          {
+            "fr": "200",
+            "en": "200"
+          }
+        },
+        "collection":
+        {
+          "label":
+          {
+            "fr": "Collection",
+            "en": "Series"
+          },
+          "placeholder":
+          {
+            "fr": "World's Best Friends",
+            "en": "World's Best Friends"
+          }
+        },
+        "type":
+        {
+          "label":
+          {
+            "fr": "Type",
+            "en": "Type"
+          }
+        },
+        "personnages":
+        {
+          "label":
+          {
+            "fr": "Personnages",
+            "en": "Characters"
+          },
+          "placeholder":
+          {
+            "fr": "BayMax",
+            "en": "BayMax"
+          }
+        },
+        "attractions":
+        {
+          "label":
+          {
+            "fr": "Attractions",
+            "en": "Attractions"
+          },
+          "placeholder":
+          {
+            "fr": "It's a small world",
+            "en": "It's a small world"
+          }
+        },
+        "photo":
+        {
+          "label":
+          {
+            "fr": "Photo",
+            "en": "Picture"
+          },
+          "placeholder":
+          {
+            "fr": "Non Implémenté",
+            "en": "Not Released"
+          }
+        },
+        "send":
+        {
+          "label":
+          {
+            "fr": "Envoyer",
+            "en": "Send"
+          }
+        }
+      }
+    },
+    "personnage":
+    {
+      "name":
+      {
+        "fr": "Personnage",
+        "en": "Character"
+      }
+    },
+    "error":
+    {
+      "noCollectionInput":
+      {
+        "fr": "Aucune collection n'a été saisie",
+        "en": "No series was input"
+      },
+      "collectionNotRegister":
+      {
+        "fr": "La collection que vous avez saisie n'est pas enregistrée",
+        "en": "Series not registered"
+      },
+      "noLibelleInput":
+      {
+        "fr": "Aucun intitulé n'a été saisi",
+        "en": "No title was input"
+      },
+      "noNumberInput":
+      {
+        "fr": "Le nombre d'exemplaires n'a pas été saisi",
+        "en": "The number of copies hasn't been input"
+      },
+      "popup":
+      {
+        "pins":
+        {
+          "success":
+          {
+            "fr": "Le pins a bien été ajouté",
+            "en": "Pin's was successfully added"
+          },
+          "error":
+          {
+            "fr": "Erreur lors de l'ajout du pins, erreur : ",
+            "en": "Error when the pin's was added, error : "
+          }
+        }
       }
     }
   },

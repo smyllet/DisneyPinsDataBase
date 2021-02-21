@@ -28,6 +28,7 @@ app.use(session({
 }))
 app.set('view engine', 'ejs')
 app.disable('view cache')
+app.set('etag', false)
 app.locals = {
     lang: require('./lang.json')
 }
@@ -60,3 +61,6 @@ app.use('/', require('./routes/register'))
 
 // Contribution page
 app.use('/', require('./routes/contribution'))
+
+// Contribute page
+app.use('/', require('./routes/contribute'))

@@ -3,8 +3,18 @@ body {
     color: white;
 }
 
+main {
+    position: relative;
+    min-height: 85vh;
+}
+
 footer p {
     width: 100%;
-    position: absolute;
     bottom: 0;
+    margin-top: 10px;
+}
+
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
 }

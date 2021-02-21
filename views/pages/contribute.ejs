@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.contribute.name[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/contribute.css">
+
+    <script type="text/javascript" src="/javascript/contribute.js"></script>
+</head>
+<body>
+<!-- Haut de page -->
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<!-- Contenue de la page -->
+<main>
+    <!-- Titre -->
+    <h1><%=lang.contribute.addTitle[navLang]%></h1>
+
+    <br>
+
+    <!-- Choix du type de contribution -->
+    <div id="contribute_menu">
+        <ul class="nav nav-pills justify-content-center">
+            <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#add-collection"><%=lang.contribute.collection.name[navLang]%></a></li>
+            <li class="nav-item active"><a data-toggle="tab" class="nav-link active" href="#add-pins"><%=lang.contribute.pins.name[navLang]%></a></li>
+            <li class="nav-item"><a data-toggle="tab" class="nav-link" href="#add-personnage"><%=lang.contribute.personnage.name[navLang]%></a></li>
+        </ul>
+    </div>
+
+    <br><br>
+
+    <!-- Conteneur formulaire contribution -->
+    <div class="tab-content">
+        <!-- Contribution collection -->
+        <div id="add-collection" class="tab-pane fade">
+            <!-- todo -->
+            <h1><%=lang.contribute.collection.name[navLang]%></h1>
+        </div>
+
+        <!-- Contribution Pins -->
+        <div id="add-pins" class="tab-pane fade active show">
+            <form method="post" action="/contribute/pins">
+                <!-- Input zone -->
+                <div id="add-pins_inputGrid" style="display: grid; justify-content: center">
+                    <!-- Intitulé du Pins -->
+                    <div class="form-group">
+                        <label for="add-pins_input_intitule"><%=lang.contribute.pins.form.libelle.label[navLang]%><span style="color: red"> *</span></label>
+                        <input type="text" class="form-control" id="add-pins_input_intitule" placeholder="<%=lang.contribute.pins.form.libelle.placeholder[navLang]%>" name="add_pins_form[name]" required/>
+                    </div>
+
+                    <!-- Date de sortie du Pins -->
+                    <div class="form-group">
+                        <label for="add-pins_input_release-date"><%=lang.contribute.pins.form.releaseDate.label[navLang]%><span style="color: red"> *</span></label>
+                        <input type="date" class="form-control" id="add-pins_input_release-date" name="add_pins_form[release_date]" required/>
+                    </div>
+
+                    <!-- Nombre d'exemplaire du Pins -->
+                    <div class="form-group">
+                        <label for="add-pins_input_edition-number"><%=lang.contribute.pins.form.editionNumber.label[navLang]%><span style="color: red"> *</span></label>
+                        <input type="number" class="form-control" id="add-pins_input_edition-number" placeholder="<%=lang.contribute.pins.form.editionNumber.placeholder[navLang]%>" min="1" step="1" name="add_pins_form[edition_number]" required/>
+                    </div>
+
+                    <!-- Collection du Pins -->
+                    <div class="form-group">
+                        <label for="add-pins_input_series"><%=lang.contribute.pins.form.collection.label[navLang]%><span style="color: red"> *</span></label>
+                        <input type="text" class="form-control" id="add-pins_input_series" placeholder="<%=lang.contribute.pins.form.collection.placeholder[navLang]%>" name="add_pins_form[series]" required/>
+                    </div>
+
+                    <!-- Type de Pins -->
+                    <div class="form-group">
+                        <label for="add-pins_input_type"><%=lang.contribute.pins.form.type.label[navLang]%></label>
+                        <select class="form-control" id="add-pins_input_type" name="add_pins_form[type]" required>
+                            <option value=1>Normal</option>
+                            <option value=2>Jumbo</option>
+                            <option value=3>Gawais</option>
+                        </select>
+                    </div>
+
+                    <input type="hidden" id="add-pins_input_series_id" name="add_pins_form[series_id]" required>
+
+                    <!-- Personnage present sur le Pins -->
+                    <div class="form-group" id="add-pins_input-div_personnage">
+                        <label for="add-pins_input_personnage"><%=lang.contribute.pins.form.personnages.label[navLang]%></label>
+                        <div>
+                            <input type="text" class="form-control" id="add-pins_input_personnage" placeholder="<%=lang.contribute.pins.form.personnages.placeholder[navLang]%>" name="add_pins_form[personnage]"/>
+                        </div>
+                    </div>
+
+                    <!-- Attraction present sur le Pins -->
+                    <div class="form-group" id="add-pins_input-div_attraction">
+                        <label for="add-pins_input_attraction"><%=lang.contribute.pins.form.attractions.label[navLang]%></label>
+                        <div>
+                            <input type="text" class="form-control" id="add-pins_input_attraction" placeholder="<%=lang.contribute.pins.form.attractions.placeholder[navLang]%>" name="add_pins_form[attraction]"/>
+                        </div>
+                    </div>
+
+                    <!-- Photo zone -->
+                    <div id="add-pins_file-div_photo" class="form-group">
+                        <label>Photo</label>
+                        <div style="width: 260px; height: 230px; background-color: rgba(4, 168, 226, 0.4); margin-bottom: 10px; text-align: center;">
+                            <h3 style="top: 40%; position: relative">Non Implémenté</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <br><br>
+
+                <div style="text-align: center">
+                    <button id="add-pins_button_send" type="submit" class="btn btn-primary btn-lg" disabled><%=lang.contribute.pins.form.send.label[navLang]%></button>
+                </div>
+
+                <br>
+
+                <div id="add-pins_error-box">
+                    <!-- Insertion des erreur -->
+                </div>
+            </form>
+        </div>
+
+        <!-- Contribution Personnage -->
+        <div id="add-personnage" class="tab-pane fade">
+            <!-- todo -->
+            <h1><%=lang.contribute.personnage.name[navLang]%></h1>
+        </div>
+    </div>
+</main>
+
+<script type="text/javascript">
+    let errorList = JSON.parse(`<%- JSON.stringify(lang.contribute.error) %>`)
+    let navLang = '<%=navLang%>'
+
+    <%if(contributeResult)
+    {
+        if (contributeResult.status === 200) {
+            %>alert("<%=lang.contribute.error.popup.pins.success[navLang]%>")
+            <%
+        } else {
+            %>alert("<%=lang.contribute.error.popup.pins.error[navLang] + contributeResult.status%>")
+            <%
+        }
+    }
+    %>
+</script>
+
+<!-- Pied de page -->
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>

@@ -1,0 +1,122 @@
+main {
+    padding-right: 2vh;
+    padding-left: 2vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+#contribute_menu .nav-link {
+    color: white;
+    margin: 10px;
+}
+
+#contribute_menu .nav-link.active {
+    border: 2px solid white;
+    background-color: rgba(4, 168, 226, 0.4);
+}
+
+#contribute_menu .nav-link:not(.active):hover {
+    border: 2px solid gray;
+    background-color: rgba(4, 168, 226, 0.1);
+}
+
+.form-group {
+    max-width: 300px;
+}
+
+.bootstrap-tagsinput, .bootstrap-tagsinput input {
+    min-width: 300px;
+    width: 100%;
+}
+
+.btn-primary {
+    background-color: #04A8E2;
+    border: none;
+    box-shadow: none;
+}
+
+.btn-primary:hover {
+    background-color: white;
+    color: #04A8E2;
+    border: none;
+}
+
+.form-control:focus {
+    box-shadow: initial;
+    border: none;
+}
+
+.form-group{
+    min-width: 220px;
+    width: 100%;
+}
+
+#add-pins_inputGrid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-column-gap: 20px;
+}
+
+#add-pins_error-box {
+    text-align: center;
+    color: red;
+}
+
+.form-group.error_input label{
+    color: red;
+}
+
+.form-group.error_input input{
+    border: 1px solid red;
+}
+
+@media all and (min-width: 530px) {
+    #add-pins_inputGrid {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    #add-pins_input-div_personnage, #add-pins_input-div_attraction, #add-pins_file-div_photo {
+        grid-column: span 2;
+    }
+
+    .bootstrap-tagsinput, .bootstrap-tagsinput input, #add-pins_input-div_personnage, #add-pins_input-div_attraction {
+        min-width: 460px;
+    }
+}
+
+@media all and (min-width: 900px) {
+    #add-pins_inputGrid {
+        grid-template-columns: repeat(3, auto);
+        justify-items: initial;
+    }
+
+    #add-pins_input-div_personnage, #add-pins_input-div_attraction {
+        grid-column: span 2;
+    }
+
+    #add-pins_file-div_photo {
+        grid-column: 3/4;
+        grid-row: 2/5;
+    }
+}
+
+@media all and (min-width: 1400px) {
+    #add-pins_inputGrid {
+        grid-template-columns: repeat(8, auto);
+    }
+
+    #add-pins_input-div_personnage, #add-pins_input-div_attraction {
+        grid-column: span 3;
+    }
+
+    .form-group {
+        grid-column: span 2;
+    }
+
+    #add-pins_file-div_photo {
+        grid-column: 7/9;
+        grid-row: 1/4;
+    }
+}
