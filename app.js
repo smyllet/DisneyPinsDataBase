@@ -64,3 +64,6 @@ app.use('/', require('./routes/contribution'))
 
 // Contribute page
 app.use('/', require('./routes/contribute'))
+
+// Developer Page
+app.use('/', require('./routes/getPrivilege'))

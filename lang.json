@@ -344,7 +344,7 @@
         "invalide_identity":
         {
           "fr": "Adresse mail et/ou mot de passe incorrect",
-          "en": "Wrong e-mail adress and/or password "
+          "en": "Wrong e-mail address and/or password "
         }
       }
     }
@@ -433,6 +433,218 @@
     {
       "fr": "Déconnexion",
       "en": "Logout"
+    }
+  },
+  "getPrivilege":
+  {
+    "name":
+    {
+      "fr": "Demande de privilège",
+      "en": "Asking for privileges"
+    },
+    "shortName":
+    {
+      "fr": "Privilèges",
+      "en": "Privileges"
+    },
+    "contributor":
+    {
+      "name":
+      {
+        "fr": "Devenir contributeur",
+        "en": "Become a contributor"
+      },
+      "shortName":
+      {
+        "fr": "Contributeur",
+        "en": "Contributor"
+      },
+      "description":
+      {
+        "fr": "Vous pensez pouvoir contribuer à renseigner les différents Pins ? Vous souhaitez aider à agrandir la base de données ? Alors faites une demande pour nous rejoindre en cliquant sur le bouton ci-dessous.",
+        "en": "Do you think you can contribute to list the different Pin's ? Do you wish to extend the database ? Ask to join us by clicking on the button below."
+      },
+      "result":
+      {
+        "date_request":
+        {
+          "fr": "Date de la demande",
+          "en": "Date of the request"
+        },
+        "park":
+        {
+          "fr": "Parc préféré",
+          "en": "Favourite park"
+        },
+        "pass_annual":
+        {
+          "fr": "Pass annuel",
+          "en": "Annual pass"
+        },
+        "language_speak":
+        {
+          "fr": "Langues parlées",
+          "en": "Spoken languages"
+        },
+        "old_pins":
+        {
+          "fr": "Contribution aux anciens pins",
+          "en": "Contributing to old Pin's"
+        },
+        "message":
+        {
+          "fr": "Commentaire",
+          "en": "Text"
+        },
+        "value":
+        {
+          "nothing":
+          {
+            "fr": "Aucun",
+            "en": "Nothing"
+          },
+          "yes":
+          {
+            "fr": "Oui",
+            "en": "Yes"
+          },
+          "no":
+          {
+            "fr": "Non",
+            "en": "No"
+          }
+        }
+      },
+      "form":
+      {
+        "park":
+        {
+          "fr": "Parc Disney dans lequel vous vous rendez le plus souvent",
+          "en": "Most visited Disney park"
+        },
+        "pass_annual":
+        {
+          "fr": "Vous possédez actuellement un pass annuel pour ce parc",
+          "en": "You're currently possessing an annual pass for this park"
+        },
+        "language_speak":
+        {
+          "fr": "Quelles langues parlez-vous ?",
+          "en": "Which languages do you speak ?"
+        },
+        "old_pins":
+        {
+          "fr": "Vous pouvez contribuer à l'ajout d'anciens pins",
+          "en": "You can contribute to add old Pin's"
+        },
+        "message":
+        {
+          "fr": "Commentaire",
+          "en": "Text"
+        },
+        "send":
+        {
+          "fr": "Envoyer",
+          "en": "Send"
+        }
+      }
+    },
+    "developer":
+    {
+      "name":
+      {
+        "fr": "Devenir développeur",
+        "en": "Becoming a developer"
+      },
+      "shortName":
+      {
+        "fr": "Développeur",
+        "en": "Developer"
+      },
+      "description":
+      {
+        "fr": "Pour des raisons de sécurité et de performance, l'accès au programme développeur se fait uniquement sur demande. Cliquez sur le bouton ci dessous pour faire votre demande.",
+        "en": "For reasons of safety and performance, the developer's program can only be accessed through a request. Click on the button below in order to request."
+      },
+      "result":
+      {
+        "date_request":
+        {
+          "fr": "Date de la demande",
+          "en": "Date of the request"
+        },
+        "language_speak":
+        {
+          "fr": "Langues parlées",
+          "en": "Spoken languages"
+        },
+        "country_target":
+        {
+          "fr": "Pays ciblé",
+          "en": "Targeted country"
+        },
+        "message":
+        {
+          "fr": "Commentaire",
+          "en": "Text"
+        }
+      },
+      "form":
+      {
+        "language_speak":
+        {
+          "fr": "Quelles langues parlez-vous ?",
+          "en": "Which languages do you speak ?"
+        },
+        "country_target":
+        {
+          "fr": "A quels pays vos applications sont-elles destinées ?",
+          "en": "Which countries are your applications intended for ?"
+        },
+        "message":
+        {
+          "fr": "Dites nous en plus sur ce que vous comptez faire avec cette API",
+          "en": "Tell us more about what you're planning to do with this API"
+        },
+        "send":
+        {
+          "fr": "Envoyer",
+          "en": "Send"
+        }
+      }
+    },
+    "status":
+    {
+      "label":
+      {
+        "fr": "Statut",
+        "en": "Status"
+      },
+      "0":
+      {
+        "fr": "Demande envoyée",
+        "en": "Request sent"
+      },
+      "1":
+      {
+        "fr": "En cours de traitement",
+        "en": "Currently in progress"
+      },
+      "2":
+      {
+        "fr": "Refusé",
+        "en": "Denied"
+      },
+      "3":
+      {
+        "fr": "Accepté",
+        "en": "Accepted"
+      }
+    },
+    "goback":
+    {
+      "fr": "Retour",
+      "en": "Go back"
     }
   }
 }

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.getPrivilege.shortName[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/getPrivilege.css">
+    <script type="text/javascript" src="/javascript/getPrivilege.js"></script>
+</head>
+<body>
+<!-- Haut de page -->
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<!-- Contenue de la page -->
+<main>
+    <section id="getPrivilegeSelect">
+        <h1 style="text-align: center; padding-top: 2vh"><%=lang.getPrivilege.name[navLang]%></h1>
+
+        <br>
+
+        <div style="justify-items: center;">
+            <div style="text-align: center; width: 70%; margin-top: auto; margin-bottom: auto">
+                <h2><%=lang.getPrivilege.contributor.shortName[navLang]%></h2>
+                <br>
+                <p><%=lang.getPrivilege.contributor.description[navLang]%></p>
+                <br>
+                <button class="btn btn-light btn-lg" id="getPrivilegeContributorButton"><%=lang.getPrivilege.contributor.name[navLang]%></button>
+            </div>
+
+            <hr>
+
+            <div style="text-align: center; width: 70%; margin-top: auto; margin-bottom: auto">
+                <h2><%=lang.getPrivilege.developer.shortName[navLang]%></h2>
+                <br>
+                <p><%=lang.getPrivilege.developer.description[navLang]%></p>
+                <br>
+                <button class="btn btn-light btn-lg" id="getPrivilegeDeveloperButton"><%=lang.getPrivilege.developer.name[navLang]%></button>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="getPrivilegeContributor" style="display: none; padding-top: 2vh;">
+        <h1 style="text-align: center;"><%=lang.getPrivilege.contributor.name[navLang]%></h1>
+
+        <br>
+
+        <div <%=(currentContributorRequest) ? "" : "hidden"%> id="getPrivilegeContributorRequestStatusDiv">
+            <%if(currentContributorRequest) {%>
+                <div class="progress">
+                    <%if(currentContributorRequest.status === 0) {
+                        %>
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 30%"></div>
+                        <%
+                    } else if(currentContributorRequest.status === 1) {
+                        %>
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 70%"></div>
+                        <%
+                    } else if(currentContributorRequest.status === 2) {
+                        %>
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"></div>
+                        <%
+                    } else if(currentContributorRequest.status === 3) {
+                        %>
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                        <%
+                    }%>
+                </div>
+                <h4><%=lang.getPrivilege.status.label[navLang]%> : <%=lang.getPrivilege.status[currentContributorRequest.status][navLang]%></h4>
+                <div id="getPrivilegeContributorRequestStatusRequestDateDiv">
+                    <h5><%=lang.getPrivilege.contributor.result.date_request[navLang]%></h5>
+                    <p><%=currentContributorRequest.register_date%></p>
+                </div>
+                <div>
+                    <h5><%=lang.getPrivilege.contributor.result.park[navLang]%></h5>
+                    <p><%=(currentContributorRequest.park_name) ? currentContributorRequest.park_name : lang.getPrivilege.contributor.result.value.nothing[navLang]%></p>
+                </div>
+                <div>
+                    <h5><%=lang.getPrivilege.contributor.result.pass_annual[navLang]%></h5>
+                    <p><%=(currentContributorRequest.pass_annual) ? lang.getPrivilege.contributor.result.value.yes[navLang] : lang.getPrivilege.contributor.result.value.no[navLang] %></p>
+                </div>
+                <div>
+                    <h5><%=lang.getPrivilege.contributor.result.language_speak[navLang]%></h5>
+                    <p><%=currentContributorRequest.languages_speak%></p>
+                </div>
+                <div>
+                    <h5><%=lang.getPrivilege.contributor.result.old_pins[navLang]%></h5>
+                    <p><%=(currentContributorRequest.old_pins) ? lang.getPrivilege.contributor.result.value.yes[navLang] : lang.getPrivilege.contributor.result.value.no[navLang] %></p>
+                </div>
+
+                <div id="getPrivilegeContributorRequestStatusRequestCommentDiv">
+                    <h5><%=lang.getPrivilege.contributor.result.message[navLang]%></h5>
+                    <p><%=currentContributorRequest.comment%></p>
+                </div>
+            <%}%>
+        </div>
+        <div <%=(currentContributorRequest) ? "hidden" : ""%>>
+            <form method="post" action="/getPrivilege/contributor">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label><%=lang.getPrivilege.contributor.form.park[navLang]%></label>
+                        <select class="form-control" name="getPrivilegeContributor[park_id]" required>
+                            <option value="-1"><%=lang.getPrivilege.contributor.result.value.nothing[navLang]%></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label><%=lang.getPrivilege.contributor.form.language_speak[navLang]%></label>
+                        <input type="text" class="form-control" maxlength="100" name="getPrivilegeContributor[language_speak]">
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="getPrivilegeContributor[pass_annual]">
+                        <label><%=lang.getPrivilege.contributor.form.pass_annual[navLang]%></label>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="checkbox" name="getPrivilegeContributor[old_pins]">
+                        <label><%=lang.getPrivilege.contributor.form.old_pins[navLang]%></label>
+                    </div>
+
+                    <div class="form-group" id="getPrivilegeContributorCommentDiv">
+                        <label><%=lang.getPrivilege.contributor.form.message[navLang]%></label>
+                        <textarea class="form-control" rows="5" name="getPrivilegeContributor[comment]"></textarea>
+                    </div>
+
+                    <div class="form-group" style="text-align: center" id="getPrivilegeContributorSendDiv">
+                        <button type="submit" class="btn btn-primary btn-lg"><%=lang.getPrivilege.contributor.form.send[navLang]%></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div style="text-align: center">
+            <button class="btn btn-light btn-lg getPrivilegeSelectButton"><%=lang.getPrivilege.goback[navLang]%></button>
+        </div>
+    </section>
+
+    <section id="getPrivilegeDeveloper" style="display: none; padding-top: 2vh">
+        <h1 style="text-align: center;"><%=lang.getPrivilege.developer.name[navLang]%></h1>
+
+        <br>
+
+        <div <%=(currentDeveloperRequest) ? "" : "hidden"%> id="getPrivilegeDeveloperRequestStatusDiv">
+            <%if(currentDeveloperRequest) {%>
+            <div class="progress">
+                <%if(currentDeveloperRequest.status === 0) {
+                %>
+                    <div class="progress-bar bg-info" role="progressbar" style="width: 30%"></div>
+                <%
+                } else if(currentDeveloperRequest.status === 1) {
+                %>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: 70%"></div>
+                <%
+                } else if(currentDeveloperRequest.status === 2) {
+                %>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%"></div>
+                <%
+                } else if(currentDeveloperRequest.status === 3) {
+                %>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                <%
+                }%>
+            </div>
+            <h4><%=lang.getPrivilege.status.label[navLang]%> : <%=lang.getPrivilege.status[currentDeveloperRequest.status][navLang]%></h4>
+            <div>
+                <h5><%=lang.getPrivilege.developer.result.date_request[navLang]%></h5>
+                <p><%=currentDeveloperRequest.register_date%></p>
+            </div>
+            <div>
+                <h5><%=lang.getPrivilege.developer.result.language_speak[navLang]%></h5>
+                <p><%=currentDeveloperRequest.languages_speak%></p>
+            </div>
+            <div>
+                <h5><%=lang.getPrivilege.developer.result.country_target[navLang]%></h5>
+                <p><%=currentDeveloperRequest.country_target%></p>
+            </div>
+            <div id="getPrivilegeDeveloperRequestStatusRequestCommentDiv">
+                <h5><%=lang.getPrivilege.developer.result.message[navLang]%></h5>
+                <p><%=currentDeveloperRequest.comment%></p>
+            </div>
+            <%}%>
+        </div>
+        <div <%=(currentDeveloperRequest) ? "hidden" : ""%>>
+            <form method="post" action="/getPrivilege/developer">
+                <div class="form-container">
+                    <div class="form-group">
+                        <label><%=lang.getPrivilege.developer.form.language_speak[navLang]%></label>
+                        <input type="text" class="form-control" maxlength="100" name="getPrivilegeDeveloper[language_speak]">
+                    </div>
+
+                    <div class="form-group">
+                        <label><%=lang.getPrivilege.developer.form.country_target[navLang]%></label>
+                        <input type="text" class="form-control" maxlength="100" name="getPrivilegeDeveloper[country_target]">
+                    </div>
+
+                    <div class="form-group" id="getPrivilegeDeveloperCommentDiv">
+                        <label><%=lang.getPrivilege.developer.form.message[navLang]%></label>
+                        <textarea class="form-control" rows="5" name="getPrivilegeDeveloper[comment]"></textarea>
+                    </div>
+
+                    <div class="form-group" style="text-align: center" id="getPrivilegeDeveloperSendDiv">
+                        <button type="submit" class="btn btn-primary btn-lg"><%=lang.getPrivilege.developer.form.send[navLang]%></button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <div style="text-align: center">
+            <button class="btn btn-light btn-lg getPrivilegeSelectButton"><%=lang.getPrivilege.goback[navLang]%></button>
+        </div>
+    </section>
+</main>
+
+<!-- Pied de page -->
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>

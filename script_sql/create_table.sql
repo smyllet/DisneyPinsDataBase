@@ -150,3 +150,32 @@ create table Serie_Contributor
     foreign key (serie_id) references Serie(id),
     foreign key (contributor_id) references Contributor(id)
 );
+
+-- Demande pour devenir contributeur
+create table Register_Contributor
+(
+    id int primary key not null auto_increment,
+    register_date date not null default (CURRENT_DATE), -- Mysql 8
+    account_id int not null,
+    status int not null default (0),
+    park_id int,
+    languages_speak varchar(100),
+    pass_annual boolean default (false),
+    old_pins boolean default (false),
+    comment longtext,
+    foreign key (account_id) references Account(id),
+    foreign key (park_id) references Park(id)
+);
+
+-- Demande pour devenir developer
+create table Register_Developer
+(
+    id int primary key not null auto_increment,
+    register_date date not null default (CURRENT_DATE), -- Mysql 8
+    account_id int not null,
+    status int not null default (0),
+    languages_speak varchar(100),
+    country_target varchar(100),
+    comment longtext,
+    foreign key (account_id) references Account(id)
+);
