@@ -1,3 +1,13 @@
 .navbar-custom {
     background-color: #04A8E2;
 }
+
+.navbar-toggler {
+    border: none;
+}
+
+.navbar-toggler:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
+}
