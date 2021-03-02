@@ -1,4 +1,5 @@
 const db_model = require('./db')
+const {QueryTypes} = require("sequelize")
 
 exports.getLastContributionsFromUserId = async (id, nbContrib) => {
     let result = null
@@ -18,11 +19,11 @@ exports.getLastContributionsFromUserId = async (id, nbContrib) => {
                             inner join serie s on sc.serie_id = s.id
                             ) as uni
                         on uni.contributor_id = u.id
-                        where u.id = ${id}
+                        where u.id = :id
                         order by uni.contribution_date desc
-                        limit ${nbContrib}`)
+                        limit :nbContrib`, {type: QueryTypes.SELECT, replacements: {id: id, nbContrib: nbContrib}})
         .then(r => {
-            result = r[0]
+            result = r
         })
     return result
 }
@@ -46,9 +47,9 @@ exports.getLastContributions = async (nbContrib) => {
                             ) as uni
                         on uni.contributor_id = u.id
                         order by uni.contribution_date desc
-                        limit ${nbContrib}`)
+                        limit :nbContrib`, {type: QueryTypes.SELECT, replacements: {nbContrib: nbContrib}})
         .then(r => {
-            result = r[0]
+            result = r
         })
     return result
 }
