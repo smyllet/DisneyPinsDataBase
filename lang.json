@@ -116,10 +116,10 @@
         "fr": "Ajouter une collection",
         "en": "Add a series"
       },
-      "signalData":
+      "addPersonnage":
       {
-        "fr": "Signaler une donnée manquante ou incorrecte",
-        "en": "Report a missing or wrong data"
+        "fr": "Ajouter un personnage",
+        "en": "Add a character"
       }
     }
   },

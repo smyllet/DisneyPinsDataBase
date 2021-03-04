@@ -14,66 +14,60 @@
 
 <!-- Contenue de la page -->
 <main>
-    <div class="row">
-        <div id="contribution_block">
-            <div>
-                <h3><%=lang.contribution.contribution_table.yourContribution[navLang]%></h3>
-                <table id="contrib_user_table" class="table table-dark table-striped table-responsive-sm">
-                    <thead>
-                    <tr>
-                        <th><%=lang.contribution.contribution_table.intitule[navLang]%></th>
-                        <th><%=lang.contribution.contribution_table.type[navLang]%></th>
-                        <th><%=lang.contribution.contribution_table.contributeur[navLang]%></th>
-                        <th><%=lang.contribution.contribution_table.date[navLang]%></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% contribUser.forEach(c => {%>
-                    <tr>
-                        <td><%=c.name%></td>
-                        <td><%=lang.contribution.contribution_table[c.type][navLang]%></td>
-                        <td><%=c.pseudo%></td>
-                        <td><%=c.contribution_date%></td>
-                    </tr>
-                    <%})%>
-                    </tbody>
-                </table>
-            </div>
+    <h2><%=lang.contribution.contributionZone.contribute[navLang]%></h2>
 
-            <br>
+    <div id="add_button_block">
+        <a href="#"><button type="button" class="btn btn-outline-success btn-lg"><%=lang.contribution.contributionZone.addSerie[navLang]%></button></a>
+        <a href="/contribute"><button type="button" class="btn btn-outline-success btn-lg"><%=lang.contribution.contributionZone.addPins[navLang]%></button></a>
+        <a href="#"><button type="button" class="btn btn-outline-success btn-lg"><%=lang.contribution.contributionZone.addPersonnage[navLang]%></button></a>
+    </div>
 
-            <div>
-                <h3><%=lang.contribution.contribution_table.lastContribution[navLang]%></h3>
-                <table id="contrib_user_table" class="table table-dark table-striped table-responsive-sm">
-                    <thead>
-                    <tr>
-                        <th><%=lang.contribution.contribution_table.intitule[navLang]%></th>
-                        <th><%=lang.contribution.contribution_table.type[navLang]%></th>
-                        <th><%=lang.contribution.contribution_table.contributeur[navLang]%></th>
-                        <th><%=lang.contribution.contribution_table.date[navLang]%></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% contribUser.forEach(c => {%>
-                    <tr>
-                        <td><%=c.name%></td>
-                        <td><%=lang.contribution.contribution_table[c.type][navLang]%></td>
-                        <td><%=c.pseudo%></td>
-                        <td><%=c.contribution_date%></td>
-                    </tr>
-                    <%})%>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div id="add_button_block">
-            <h2><%=lang.contribution.contributionZone.contribute[navLang]%></h2>
-            <br>
-            <a href="/contribute"><button type="button" class="btn btn-outline-success btn-lg"><%=lang.contribution.contributionZone.addPins[navLang]%></button></a>
-            <a href="#"><button type="button" class="btn btn-outline-success btn-lg"><%=lang.contribution.contributionZone.addSerie[navLang]%></button></a>
-            <br><br>
-            <a href="#"><button type="button" class="btn btn-outline-danger btn-lg"><%=lang.contribution.contributionZone.signalData[navLang]%></button></a>
-        </div>
+    <div>
+        <h4><%=lang.contribution.contribution_table.yourContribution[navLang]%></h4>
+        <table id="contrib_user_table" class="table table-dark table-responsive-sm">
+            <thead>
+            <tr>
+                <th><%=lang.contribution.contribution_table.intitule[navLang]%></th>
+                <th><%=lang.contribution.contribution_table.type[navLang]%></th>
+                <th><%=lang.contribution.contribution_table.contributeur[navLang]%></th>
+                <th><%=lang.contribution.contribution_table.date[navLang]%></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% contribUser.forEach(c => {%>
+            <tr>
+                <td><%=c.name%></td>
+                <td><%=lang.contribution.contribution_table[c.type][navLang]%></td>
+                <td><%=c.pseudo%></td>
+                <td><%=c.contribution_date%></td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
+    </div>
+
+    <div>
+        <h4><%=lang.contribution.contribution_table.lastContribution[navLang]%></h4>
+        <table id="contrib_user_table" class="table table-dark table-responsive-sm">
+            <thead>
+            <tr>
+                <th><%=lang.contribution.contribution_table.intitule[navLang]%></th>
+                <th><%=lang.contribution.contribution_table.type[navLang]%></th>
+                <th><%=lang.contribution.contribution_table.contributeur[navLang]%></th>
+                <th><%=lang.contribution.contribution_table.date[navLang]%></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% contribUser.forEach(c => {%>
+            <tr>
+                <td><%=c.name%></td>
+                <td><%=lang.contribution.contribution_table[c.type][navLang]%></td>
+                <td><%=c.pseudo%></td>
+                <td><%=c.contribution_date%></td>
+            </tr>
+            <%})%>
+            </tbody>
+        </table>
     </div>
 </main>
 
