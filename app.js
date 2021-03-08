@@ -67,3 +67,6 @@ app.use('/', require('./routes/contribute'))
 
 // Developer Page
 app.use('/', require('./routes/getPrivilege'))
+
+// Admin page
+app.use('/', require('./routes/admin'))

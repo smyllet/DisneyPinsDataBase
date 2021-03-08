@@ -37,6 +37,14 @@ create table Administrator
     foreign key (account_id) references Account(id)
 );
 
+-- Developer
+create table Developer
+(
+    id int primary key not null auto_increment,
+    account_id int not null,
+    foreign key (account_id) references Account(id)
+);
+
 -- Application
 create table Application
 (

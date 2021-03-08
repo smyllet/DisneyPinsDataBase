@@ -39,6 +39,9 @@ router.post('/getPrivilege/contributor', async function (req, res) {
     // Rediriger les utilisateur non connecté à la page de connexion
     if(!req.session.user) return res.redirect('/login')
 
+    // Refusé les demandes d'utilisateur déjà contributeur
+    if(req.session.user.contributor) return res.redirect('/getPrivilege')
+
     let request = req.body.getPrivilegeContributor
 
     if(request)
@@ -52,6 +55,9 @@ router.post('/getPrivilege/contributor', async function (req, res) {
 router.post('/getPrivilege/developer', async function (req, res) {
     // Rediriger les utilisateur non connecté à la page de connexion
     if(!req.session.user) return res.redirect('/login')
+
+    // Refusé les demandes d'utilisateur déjà Développeur
+    if(req.session.user.developer) return res.redirect('/getPrivilege')
 
     let request = req.body.getPrivilegeDeveloper
 

@@ -464,6 +464,11 @@
         "fr": "Vous pensez pouvoir contribuer à renseigner les différents Pins ? Vous souhaitez aider à agrandir la base de données ? Alors faites une demande pour nous rejoindre en cliquant sur le bouton ci-dessous.",
         "en": "Do you think you can contribute to list the different Pin's ? Do you wish to extend the database ? Ask to join us by clicking on the button below."
       },
+      "already":
+      {
+        "fr": "Vous êtes déjà contributeur",
+        "en": "You're already a contributor"
+      },
       "result":
       {
         "date_request":
@@ -566,6 +571,11 @@
         "fr": "Pour des raisons de sécurité et de performance, l'accès au programme développeur se fait uniquement sur demande. Cliquez sur le bouton ci dessous pour faire votre demande.",
         "en": "For reasons of safety and performance, the developer's program can only be accessed through a request. Click on the button below in order to request."
       },
+      "already":
+      {
+        "fr": "Vous êtes déjà développeur",
+        "en": "You're already a developer"
+      },
       "result":
       {
         "date_request":
@@ -645,6 +655,158 @@
     {
       "fr": "Retour",
       "en": "Go back"
+    }
+  },
+  "admin":
+  {
+    "name":
+    {
+      "fr": "Admin",
+      "en": "Admin"
+    },
+    "soon":
+    {
+      "fr": "Fonction pas encore disponible",
+      "en": "Coming soon"
+    },
+    "dashboard":
+    {
+      "name":
+      {
+        "fr": "Tableau de bord",
+        "en": "Dashboard"
+      }
+    },
+    "users":
+    {
+      "name":
+      {
+        "fr": "Utilisateurs",
+        "en": "Users"
+      }
+    },
+    "contributions":
+    {
+      "name":
+      {
+        "fr": "Contributions",
+        "en": "Contributions"
+      }
+    },
+    "getPrivilege":
+    {
+      "name":
+      {
+        "fr": "Demandes de privilège",
+        "en": "Asking for privileges"
+      },
+      "filtres":
+      {
+        "contributor":
+        {
+          "label":
+          {
+            "fr": "Demande contributeur",
+            "en": "Contributor request"
+          }
+        },
+        "developer":
+        {
+          "label":
+          {
+            "fr": "Demande développeur",
+            "en": "Developer request"
+          }
+        },
+        "request_send":
+        {
+          "label":
+          {
+            "fr": "Demande envoyée",
+            "en": "Request send"
+          }
+        },
+        "request_in_progress":
+        {
+          "label":
+          {
+            "fr": "Demande en cours de traitement",
+            "en": "Request in progress"
+          }
+        },
+        "search":
+        {
+          "label":
+          {
+            "fr": "Recherche",
+            "en": "Search"
+          }
+        }
+      },
+      "list":
+      {
+        "nickname":
+        {
+          "fr": "Pseudo",
+          "en": "Nickname"
+        },
+        "date":
+        {
+          "fr": "Date",
+          "en": "Date"
+        },
+        "type":
+        {
+          "fr": "Type de demande",
+          "en": "Type of request"
+        },
+        "status":
+        {
+          "fr": "Statut",
+          "en": "Status"
+        },
+        "contributor":
+        {
+          "fr": "Contributeur",
+          "en": "Contributor"
+        },
+        "developer":
+        {
+          "fr": "Développeur",
+          "en": "Developer"
+        }
+      },
+      "message":
+      {
+        "no_requests":
+        {
+          "fr": "Aucune demande",
+          "en": "No Requests"
+        },
+        "no_select":
+        {
+          "fr": "Aucune demande sélectionné",
+          "en": "No request selected"
+        },
+        "searching":
+        {
+          "fr": "Recherche en cours",
+          "en": "Searching"
+        },
+        "error":
+        {
+          "fr": "Une erreur est survenue",
+          "en": "Error"
+        }
+      }
+    },
+    "applications":
+    {
+      "name":
+      {
+        "fr": "Applications",
+        "en": "Applications"
+      }
     }
   }
 }

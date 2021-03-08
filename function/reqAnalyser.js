@@ -10,6 +10,8 @@ exports.getHeadersDataFromReq = (req) => {
         data.user.id = req.session.user.id
         data.user.pseudo = req.session.user.pseudo
         data.user.contributor = req.session.user.contributor
+        data.user.admin = req.session.user.admin
+        data.user.developer = req.session.user.developer
     }
     else data.user = null
 

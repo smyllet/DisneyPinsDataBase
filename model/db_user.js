@@ -8,14 +8,14 @@ exports.getUserByIdentification = async (mail, password) => {
     let result = null
     let database = db_model.getDatabase()
 
-    await database.query(`select id, pseudo, name, firstName, mail, isContributor, isAdmin, password, enable from full_user
+    await database.query(`select id, pseudo, name, firstName, mail, isContributor, isAdmin, password, enable, isDeveloper from full_user
                           where mail = :mail`, {type: QueryTypes.SELECT, replacements: {mail: mail}}).then(r => {
         let user = r[0]
         if((user === undefined)) result = null
         else
         {
             let match = bcrypt.compareSync(password, user.password)
-            if(match) result = new User(user.id,user.pseudo,user.name,user.firstName,user.mail,(user.isContributor === 1), (user.isAdmin === 1), (user.enable === 1))
+            if(match) result = new User(user.id,user.pseudo,user.name,user.firstName,user.mail,(user.isContributor === 1), (user.isAdmin === 1), (user.enable === 1), (user.isDeveloper === 1))
             else result = null
         }
     })
@@ -26,11 +26,11 @@ exports.getUserById = async (id) => {
     let result = null
     let database = db_model.getDatabase()
 
-    await database.query(`select id, pseudo, name, firstName, mail, isContributor, isAdmin, password, enable from full_user
+    await database.query(`select id, pseudo, name, firstName, mail, isContributor, isAdmin, password, enable, isDeveloper from full_user
                           where id = :id`, {type: QueryTypes.SELECT, replacements: {id: id}}).then(r => {
         let user = r[0]
         if((user === undefined)) result = null
-        else result = new User(user.id,user.pseudo,user.name,user.firstName,user.mail,(user.isContributor === 1), (user.isAdmin === 1), (user.enable === 1))
+        else result = new User(user.id,user.pseudo,user.name,user.firstName,user.mail,(user.isContributor === 1), (user.isAdmin === 1), (user.enable === 1), (user.isDeveloper === 1))
     })
     return result
 }

@@ -5,6 +5,7 @@ use dpdb;
 set @user_id = insert_user('admin', 'Smith', 'John', 'exemple@dynivers.fr', '$2b$10$jPRmbWAIdNbj04xykly6d.iGr6rDUS1xyovtoJpvaEcuq7JMWLU82');
 insert into Administrator (account_id) values (@user_id);
 insert into Contributor (account_id) values (@user_id);
+insert into Developer (account_id) values (@user_id);
 set @contributor_id = LAST_INSERT_ID();
 
 -- Insertion Application

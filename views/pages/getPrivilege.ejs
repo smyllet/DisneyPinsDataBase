@@ -96,7 +96,10 @@
                 </div>
             <%}%>
         </div>
-        <div <%=(currentContributorRequest) ? "hidden" : ""%>>
+        <div <%=(!currentContributorRequest && user.contributor) ? "" : "hidden"%>>
+            <h1 style="text-align: center"><%=lang.getPrivilege.contributor.already[navLang]%></h1>
+        </div>
+        <div <%=(currentContributorRequest || user.contributor) ? "hidden" : ""%>>
             <form method="post" action="/getPrivilege/contributor">
                 <div class="form-container">
                     <div class="form-group">
@@ -183,7 +186,10 @@
             </div>
             <%}%>
         </div>
-        <div <%=(currentDeveloperRequest) ? "hidden" : ""%>>
+        <div <%=(!currentContributorRequest && user.developer) ? "" : "hidden"%>>
+            <h1 style="text-align: center"><%=lang.getPrivilege.developer.already[navLang]%></h1>
+        </div>
+        <div <%=(currentDeveloperRequest || user.developer) ? "hidden" : ""%>>
             <form method="post" action="/getPrivilege/developer">
                 <div class="form-container">
                     <div class="form-group">

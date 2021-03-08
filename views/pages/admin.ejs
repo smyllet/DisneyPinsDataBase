@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.admin.name[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/admin.css">
+    <script type="text/javascript" src="/javascript/admin.js"></script>
+</head>
+<body>
+<!-- Haut de page -->
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<!-- Contenue de la page -->
+<main>
+    <h1 id="admin_title"><%=lang.admin.name[navLang]%> - <span><%=lang.admin.dashboard.name[navLang]%></span></h1>
+
+    <div id="admin_menu" class="little_scroll_bar">
+        <button class="btn btn-light select" value="#admin_panel_dashboard"><%=lang.admin.dashboard.name[navLang]%></button>
+        <button class="btn btn-light" value="#admin_panel_users"><%=lang.admin.users.name[navLang]%></button>
+        <button class="btn btn-light" value="#admin_panel_contributions"><%=lang.admin.contributions.name[navLang]%></button>
+        <button class="btn btn-light" value="#admin_panel_getPrivileges"><%=lang.admin.getPrivilege.name[navLang]%></button>
+        <button class="btn btn-light" value="#admin_panel_applications"><%=lang.admin.applications.name[navLang]%></button>
+    </div>
+
+    <div id="admin_panel">
+        <!-- Panneau de contrôle -->
+        <div id="admin_panel_dashboard">
+            <h3><%=lang.admin.soon[navLang]%></h3>
+        </div>
+
+        <!-- Liste des utilisateurs du site -->
+        <div id="admin_panel_users" hidden>
+            <h3><%=lang.admin.soon[navLang]%></h3>
+        </div>
+
+        <!-- Liste des contributions -->
+        <div id="admin_panel_contributions" hidden>
+            <h3><%=lang.admin.soon[navLang]%></h3>
+        </div>
+
+        <!-- Liste des demandes de privilège -->
+        <div id="admin_panel_getPrivileges" hidden>
+            <div id="admin_panel_getPrivileges_filtres">
+                <label id="admin_panel_getPrivileges_filtres_contributor">
+                    <input type="checkbox" checked/>
+                    <%=lang.admin.getPrivilege.filtres.contributor.label[navLang]%>
+                </label>
+                <label id="admin_panel_getPrivileges_filtres_developer">
+                    <input type="checkbox" checked/>
+                    <%=lang.admin.getPrivilege.filtres.developer.label[navLang]%>
+                </label>
+
+                <label id="admin_panel_getPrivileges_filtres_request_send">
+                    <input type="checkbox" checked/>
+                    <%=lang.admin.getPrivilege.filtres.request_send.label[navLang]%>
+                </label>
+                <label id="admin_panel_getPrivileges_filtres_request_in_progress">
+                    <input type="checkbox" checked/>
+                    <%=lang.admin.getPrivilege.filtres.request_in_progress.label[navLang]%>
+                </label>
+                <div class="form-group" id="admin_panel_getPrivileges_filtres_search">
+                    <label>
+                        <input class="form-control" type="text" placeholder="<%=lang.admin.getPrivilege.filtres.search.label[navLang]%>">
+                    </label>
+                </div>
+            </div>
+
+            <div id="admin_panel_getPrivileges_list" class="little_scroll_bar">
+                <h4 class="message"><%=lang.admin.getPrivilege.message.no_requests[navLang]%></h4>
+            </div>
+
+            <div id="admin_panel_getPrivileges_result" class="little_scroll_bar">
+                <h4 class="message"><%=lang.admin.getPrivilege.message.no_select[navLang]%></h4>
+            </div>
+        </div>
+
+        <!-- List des applications -->
+        <div id="admin_panel_applications" hidden>
+            <h3><%=lang.admin.soon[navLang]%></h3>
+        </div>
+    </div>
+</main>
+
+<!-- Template élément dynamique -->
+<template id="admin_panel_getPrivileges_list_request_template">
+    <div class="admin_panel_getPrivileges_list_request_div">
+        <div>
+            <h6><%=lang.admin.getPrivilege.list.nickname[navLang]%> :</h6>
+            <span class="admin_panel_getPrivileges_list_request_nickname"></span>
+        </div>
+        <div>
+            <h6><%=lang.admin.getPrivilege.list.date[navLang]%> :</h6>
+            <span class="admin_panel_getPrivileges_list_request_date"></span>
+        </div>
+        <div>
+            <h6><%=lang.admin.getPrivilege.list.type[navLang]%> :</h6>
+            <span class="admin_panel_getPrivileges_list_request_type_contributor"><%=lang.admin.getPrivilege.list.contributor[navLang]%></span>
+            <span class="admin_panel_getPrivileges_list_request_type_developer"><%=lang.admin.getPrivilege.list.developer[navLang]%></span>
+        </div>
+        <div>
+            <h6><%=lang.admin.getPrivilege.list.status[navLang]%> :</h6>
+            <span class="admin_panel_getPrivileges_list_request_status_0"><%=lang.getPrivilege.status["0"][navLang]%></span>
+            <span class="admin_panel_getPrivileges_list_request_status_1"><%=lang.getPrivilege.status["1"][navLang]%></span>
+        </div>
+    </div>
+</template>
+<template id="admin_panel_getPrivileges_result_request_template">
+    <div class="admin_panel_getPrivileges_result_request_nickname_div">
+        <h4><%=lang.admin.getPrivilege.list.nickname[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_nickname"></h6>
+    </div>
+    <div>
+        <h4><%=lang.admin.getPrivilege.list.date[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_date"></h6>
+    </div>
+    <div>
+        <h4><%=lang.admin.getPrivilege.list.type[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_type_contributor"><%=lang.admin.getPrivilege.list.contributor[navLang]%></h6>
+        <h6 class="admin_panel_getPrivileges_result_request_type_developer"><%=lang.admin.getPrivilege.list.developer[navLang]%></h6>
+    </div>
+
+    <hr class="admin_panel_getPrivileges_result_request_hr">
+
+    <!-- Information Contributeur/Developer -->
+    <div>
+        <h4><%=lang.getPrivilege.contributor.result.language_speak[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_language_speak"></h6>
+    </div>
+    <div class="admin_panel_getPrivileges_result_request_contributor">
+        <h4><%=lang.getPrivilege.contributor.result.park[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_park"></h6>
+    </div>
+    <div class="admin_panel_getPrivileges_result_request_developer">
+        <h4><%=lang.getPrivilege.developer.result.country_target[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_country_target"></h6>
+    </div>
+    <div class="admin_panel_getPrivileges_result_request_contributor">
+        <h4><%=lang.getPrivilege.contributor.result.pass_annual[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_pass_annual_yes"><%=lang.getPrivilege.contributor.result.value.yes[navLang]%></h6>
+        <h6 class="admin_panel_getPrivileges_result_request_pass_annual_no"><%=lang.getPrivilege.contributor.result.value.no[navLang]%></h6>
+    </div>
+    <div class="admin_panel_getPrivileges_result_request_contributor">
+        <h4><%=lang.getPrivilege.contributor.result.old_pins[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_old_pins_yes"><%=lang.getPrivilege.contributor.result.value.yes[navLang]%></h6>
+        <h6 class="admin_panel_getPrivileges_result_request_old_pins_no"><%=lang.getPrivilege.contributor.result.value.no[navLang]%></h6>
+    </div>
+    <div class="admin_panel_getPrivileges_result_request_message_div">
+        <h4><%=lang.getPrivilege.contributor.result.message[navLang]%> :</h4>
+        <h6 class="admin_panel_getPrivileges_result_request_message"></h6>
+    </div>
+
+    <button class="btn btn-danger admin_panel_getPrivileges_result_request_refuse">Refuser</button>
+    <button class="btn btn-success admin_panel_getPrivileges_result_request_accept">Accepter</button>
+</template>
+<template id="admin_panel_getPrivileges_message_no_select_template"><h4 class="message"><%=lang.admin.getPrivilege.message.no_select[navLang]%></h4></template>
+<template id="admin_panel_getPrivileges_message_no_requests_template"><h4 class="message"><%=lang.admin.getPrivilege.message.no_requests[navLang]%></h4></template>
+<template id="admin_panel_getPrivileges_message_searching_template"><h4 class="message"><%=lang.admin.getPrivilege.message.searching[navLang]%></h4></template>
+<template id="admin_panel_getPrivileges_message_error_template"><h4 class="message"><%=lang.admin.getPrivilege.message.error[navLang]%></h4></template>
+
+<!-- Pied de page -->
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>
