@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.developer.name[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <link rel="stylesheet" href="/css/developer.css">
+    <script type="text/javascript" src="/javascript/developer.js"></script>
+</head>
+<body>
+<!-- Haut de page -->
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<!-- Contenue de la page -->
+<main>
+    <h1><%=lang.developer.name[navLang]%></h1>
+
+    <div id="developer_panel_application_list" class="little_scroll_bar">
+        <h4 class="message"><%=lang.developer.message.no_application[navLang]%></h4>
+    </div>
+
+    <div id="developer_panel_application_result" class="little_scroll_bar">
+        <h4 class="message"><%=lang.developer.message.no_select[navLang]%></h4>
+    </div>
+
+    <div id="developer_panel_application_add" class="little_scroll_bar">
+        <h4 class="message"><%=lang.developer.add.title[navLang]%></h4>
+
+        <div class="form-group">
+            <label for="developer_panel_application_add_name"><%=lang.developer.add.form.name[navLang]%><span style="color: red"> *</span></label>
+            <input type="text" class="form-control" id="developer_panel_application_add_name">
+        </div>
+
+        <div class="form-group">
+            <label for="developer_panel_application_add_description"><%=lang.developer.add.form.description[navLang]%></label>
+            <textarea rows="10" class="form-control" id="developer_panel_application_add_description"></textarea>
+        </div>
+
+        <button class="form-control btn-light" id="developer_panel_application_add_button" disabled><%=lang.developer.add.form.send[navLang]%></button>
+    </div>
+</main>
+
+<!-- Template élément dynamique -->
+<template id="developer_panel_application_list_template">
+    <div class="developer_panel_application_list_div">
+        <div>
+            <h6><%=lang.developer.list.name[navLang]%> :</h6>
+            <span class="developer_panel_application_list_name"></span>
+        </div>
+        <div>
+            <h6><%=lang.developer.list.description[navLang]%> :</h6>
+            <span class="developer_panel_application_list_description"></span>
+        </div>
+    </div>
+</template>
+<template id="developer_panel_application_result_template">
+    <div class="developer_panel_application_result_name_div">
+        <h3><%=lang.developer.result.application[navLang]%> - <span class="developer_panel_application_result_name"></span></h3>
+    </div>
+    <div>
+        <h6 class="developer_panel_application_result_description"></h6>
+    </div>
+    <div class="developer_panel_application_result_token_div">
+        <h4><%=lang.developer.result.token[navLang]%></h4>
+        <button class="btn btn-light"><%=lang.developer.result.show[navLang]%></button>
+        <div class="developer_panel_application_result_token"></div>
+    </div>
+
+    <button class="btn btn-danger developer_panel_application_result_remove"><%=lang.developer.result.remove[navLang]%></button>
+</template>
+<template id="developer_panel_message_no_select_template"><h4 class="message"><%=lang.developer.message.no_select[navLang]%></h4></template>
+<template id="developer_panel_message_no_requests_template"><h4 class="message"><%=lang.developer.message.no_application[navLang]%></h4></template>
+<template id="developer_panel_message_searching_template"><h4 class="message"><%=lang.developer.message.searching[navLang]%></h4></template>
+<template id="developer_panel_message_error_template"><h4 class="message"><%=lang.developer.message.error[navLang]%></h4></template>
+<template id="developer_panel_message_no_name_template"><small class="error_message"><%=lang.developer.message.no_name[navLang]%></small></template>
+<template id="developer_panel_message_already_use_template"><small class="error_message"><%=lang.developer.message.already_use[navLang]%></small></template>
+<template id="developer_panel_text_show_template"><%=lang.developer.result.show[navLang]%></template>
+<template id="developer_panel_text_hide_template"><%=lang.developer.result.hide[navLang]%></template>
+
+<!-- Pied de page -->
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>

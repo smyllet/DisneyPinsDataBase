@@ -70,3 +70,6 @@ app.use('/', require('./routes/getPrivilege'))
 
 // Admin page
 app.use('/', require('./routes/admin'))
+
+// Developer page
+app.use('/', require('./routes/developer'))

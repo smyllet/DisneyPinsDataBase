@@ -9,7 +9,7 @@ insert into Developer (account_id) values (@user_id);
 set @contributor_id = LAST_INSERT_ID();
 
 -- Insertion Application
-insert into Application (name, description, apiToken, account_id) VALUES ('App Test', 'Application de test de l\'api', 'BigT0kenS3cUrity',@user_id);
+insert into Application (name, description, apiToken, account_id) VALUES ('App Test', 'Application de test de l\'api', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiQXBwIFRlc3QiLCJwc2V1ZG8iOiJhZG1pbiIsImRhdGUiOiIxNjE1NTU4MDczMTUzIiwiaWF0IjoxNjE1NTU4MDczfQ.8t4-VEjeCrhgQPuD3q9gt32epR0Agl7_BOf44KlrhAE',@user_id);
 
 -- Insertion des pays
 insert into Country (name) value ('Etats-Unis'),('France'),('Japon'),('Chine');

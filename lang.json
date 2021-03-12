@@ -781,7 +781,7 @@
         "no_requests":
         {
           "fr": "Aucune demande",
-          "en": "No Requests"
+          "en": "No requests"
         },
         "no_select":
         {
@@ -806,6 +806,114 @@
       {
         "fr": "Applications",
         "en": "Applications"
+      }
+    }
+  },
+  "developer":
+  {
+    "name":
+    {
+      "fr": "Développeur",
+      "en": "Developer"
+    },
+    "list" :
+    {
+      "name":
+      {
+        "fr": "Intitulé",
+        "en": "Name"
+      },
+      "description":
+      {
+        "fr": "Description",
+        "en": "Description"
+      }
+    },
+    "result":
+    {
+      "application":
+      {
+        "fr": "Application",
+        "en": "Application"
+      },
+      "token":
+      {
+        "fr": "Token",
+        "en": "Token"
+      },
+      "remove":
+      {
+        "fr": "Supprimer",
+        "en": "Remove"
+      },
+      "show":
+      {
+        "fr": "Afficher",
+        "en": "Show"
+      },
+      "hide":
+      {
+        "fr": "Masquer",
+        "en": "Hide"
+      }
+    },
+    "add":
+    {
+      "title":
+      {
+        "fr": "Ajouter une application",
+        "en": "Add application"
+      },
+      "form":
+      {
+        "name":
+        {
+          "fr": "Nom de l'application",
+          "en": "Name of application"
+        },
+        "description":
+        {
+          "fr": "Description",
+          "en": "Description"
+        },
+        "send":
+        {
+          "fr": "Ajouter",
+          "en": "Add"
+        }
+      }
+    },
+    "message":
+    {
+      "no_application":
+      {
+        "fr": "Aucune applications",
+        "en": "No application"
+      },
+      "no_select":
+      {
+        "fr": "Aucune application sélectionné",
+        "en": "No application selected"
+      },
+      "searching":
+      {
+        "fr": "Recherche en cours",
+        "en": "Searching"
+      },
+      "error":
+      {
+        "fr": "Une erreur est survenue",
+        "en": "Error"
+      },
+      "no_name":
+      {
+        "fr": "Aucun nom n'a été saisie",
+        "en": "No name input"
+      },
+      "already_use":
+      {
+        "fr": "Une de vos applications porte déjà ce nom",
+        "en": "Name already use"
       }
     }
   }

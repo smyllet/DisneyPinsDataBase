@@ -28,6 +28,13 @@
                 </li>
             <%}%>
 
+            <!-- Page de développeur -->
+            <%if(user && user.developer) {%>
+            <li class="nav-item <%if (title === "developer") { %>active<% } %>">
+                <a class="nav-link" href="/developer"><%=lang.developer.name[navLang]%></a>
+            </li>
+            <%}%>
+
             <!-- Page admin -->
             <%if(user && user.admin) {%>
             <li class="nav-item <%if (title === "admin") { %>active<% } %>">

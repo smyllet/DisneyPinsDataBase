@@ -12,5 +12,9 @@
     "port": "3306",
     "dialect": "mysql",
     "database": "dpdb"
+  },
+  "api":
+  {
+    "jwtSecretKey": ""
   }
 }

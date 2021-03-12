@@ -1,0 +1,177 @@
+/* - - - - - Main - - - - - */
+main {
+    display: grid;
+    grid-template-columns: 350px auto max-content;
+    grid-template-rows: min-content auto;
+    row-gap: 15px;
+    column-gap: 10px;
+    height: 85vh;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+h1 {
+    margin-top: 10px;
+    text-align: center;
+    grid-column: 1/-1;
+}
+
+/* Custom Scrollbar */
+.little_scroll_bar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.little_scroll_bar::-webkit-scrollbar-track {
+    background: rgba(4,168,226,0.1);
+}
+
+.little_scroll_bar::-webkit-scrollbar-thumb {
+    background: rgba(4,168,226,0.7);
+}
+
+.little_scroll_bar::-webkit-scrollbar-thumb:hover {
+    background: rgba(4,168,226,0.9);
+}
+
+/* - - - - - List des application - - - - - */
+
+#developer_panel_application_list, #developer_panel_application_result, #developer_panel_application_add {
+    border: 2px solid white;
+    height: 100%;
+    padding: 15px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#developer_panel_application_list {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    grid-auto-rows: min-content;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+#developer_panel_application_result .message, #developer_panel_application_list .message {
+    text-align: center;
+    grid-column: 1/-1;
+}
+
+.developer_panel_application_list_div {
+    display: grid;
+    border: 2px solid #44444C;
+    padding: 5px;
+    border-radius: 5px;
+    gap: 5px;
+    background-color: #77D3D3;
+    color: #44444C;
+}
+
+.developer_panel_application_list_div:hover, .developer_panel_application_list_div.select {
+    background-color: #77E3D3;
+    border-color: white;
+    cursor: pointer;
+}
+
+.developer_panel_application_list_div.select {
+    pointer-events: none;
+}
+
+#developer_panel_application_list h6 {
+    margin-bottom: 0;
+
+}
+
+/* - - - - - Résultat des application - - - - - */
+
+#developer_panel_application_result {
+    display: grid;
+    padding-left: 50px;
+    padding-right: 50px;
+    gap: 30px;
+    grid-auto-rows: min-content;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    word-break: break-word;
+}
+
+.developer_panel_application_result_remove {
+    width: 200px;
+}
+
+.developer_panel_application_result_token_div {
+    display: grid;
+    grid-template-columns: auto 100px;
+    text-align: left;
+    grid-auto-rows: min-content;
+    width: 100%;
+    gap: 5px;
+}
+
+.developer_panel_application_result_token_div h4 {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    align-self: end;
+}
+
+.developer_panel_application_result_token_div button {
+    padding: 2px;
+    margin-bottom: 0;
+    align-self: end;
+}
+
+.developer_panel_application_result_token {
+    grid-column: 1/-1;
+    border: 2px solid #848484;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: #848484;
+    min-height: 62px;
+}
+
+.developer_panel_application_result_token_div.show .developer_panel_application_result_token {
+    background-color: #343434;
+}
+
+/* - - - - - Ajouter une application - - - - - */
+#developer_panel_application_add {
+    display: grid;
+    grid-template-columns: auto;
+    gap: 10px;
+    grid-auto-rows: min-content;
+    border-radius: 15px;
+    margin-left: 50px;
+    width: 450px;
+}
+
+#developer_panel_application_add h4 {
+    text-align: center;
+}
+
+#developer_panel_application_add_button {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#developer_panel_application_add_button:disabled {
+    background-color: lightgray;
+    border-color: lightgray;
+    width: min-content;
+}
+
+#developer_panel_application_add .error {
+    color: red;
+}
+
+#developer_panel_application_add .error input {
+    border-color: red;
+}
+
+#developer_panel_application_add .error input:focus {
+    box-shadow: 0 5px 11px 0 rgba(255, 0, 0,.18),
+    0 4px 15px 0 rgba(255, 0, 0,.15);
+}
