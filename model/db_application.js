@@ -5,7 +5,7 @@ exports.getApplicationListForAccountId = async (id) => {
     let result = null
     let database = db_model.getDatabase()
 
-    await database.query(`select id, name, description, apiToken, account_id from application where account_id = :id`, {type: QueryTypes.SELECT, replacements: {id: id}})
+    await database.query(`select id, name, description, account_id from application where account_id = :id`, {type: QueryTypes.SELECT, replacements: {id: id}})
         .then(r => {
             result = r
         })
@@ -42,6 +42,18 @@ exports.getApplicationTokenById = async (id) => {
     let database = db_model.getDatabase()
 
     await database.query(`select id, apiToken from application where id = :id`, {type: QueryTypes.SELECT, replacements: {id: id}})
+        .then(r => {
+            result = r[0]
+        })
+
+    return result
+}
+
+exports.getApplicationByToken = async (token) => {
+    let result = null
+    let database = db_model.getDatabase()
+
+    await database.query(`select id, name, apiToken from application where apiToken = :token`, {type: QueryTypes.SELECT, replacements: {token: token}})
         .then(r => {
             result = r[0]
         })

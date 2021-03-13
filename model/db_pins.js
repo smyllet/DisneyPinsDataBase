@@ -1,6 +1,45 @@
 const db_model = require('./db')
 const {QueryTypes} = require("sequelize");
 
+function parseFullPins(pins) {
+    let characters = []
+    let attractions = []
+
+    if(pins.personnages_id && pins.personnages_name) {
+        let id_list = pins.personnages_id.split(';')
+        let name_list = pins.personnages_name.split(';')
+
+        id_list.forEach((id, index) => {
+            let name = name_list[index]
+            if(name) {
+                characters.push({id: id, name: name})
+            }
+        })
+    }
+
+    if(pins.attractions_id && pins.attractions_name) {
+        let id_list = pins.attractions_id.split(';')
+        let name_list = pins.attractions_name.split(';')
+
+        id_list.forEach((id, index) => {
+            let name = name_list[index]
+            if(name) {
+                attractions.push({id: id, name: name})
+            }
+        })
+    }
+
+    pins.characters = characters
+    pins.attractions = attractions
+
+    delete pins.personnages_id
+    delete pins.personnages_name
+    delete pins.attractions_id
+    delete pins.attractions_name
+
+    return pins
+}
+
 exports.createPins = async (name, release_date, edition_number, serie_id, type_id, contributor_id, personnage, attraction) => {
     let result = false
     let database = db_model.getDatabase()
@@ -30,6 +69,29 @@ exports.createPins = async (name, release_date, edition_number, serie_id, type_i
             }).catch(console.error)
         }).catch(console.error)
     }).catch(console.error)
+
+    return result
+}
+
+exports.getFullPinsById = async (id) => {
+    let result = null
+    let database = db_model.getDatabase()
+
+    await database.query(`select p.id, p.name, p.release_date, p.edition_number, s.id as 'series.id', s.name as 'series.name', park.id as 'series.park.id', park.name as 'series.park.name', c.id as 'series.park.country.id', c.name as 'series.park.country.name', t.id as 'type.id', t.name as 'type.name', GROUP_CONCAT(per.id SEPARATOR ';') as 'personnages_id', GROUP_CONCAT(per.name SEPARATOR ';') as 'personnages_name', GROUP_CONCAT(a.id SEPARATOR ';') as 'attractions_id', GROUP_CONCAT(a.name SEPARATOR ';') as 'attractions_name'
+                        from pins p 
+                        inner join serie s on p.serie_id = s.id
+                        inner join park on s.park_id = park.id
+                        inner join country c on park.country_id = c.id
+                        inner join type t on p.type_id = t.id
+                        left join pins_attraction pa on p.id = pa.pins_id
+                        left join attraction a on pa.attraction_id = a.id
+                        left join pins_personnage pp on p.id = pp.pins_id
+                        left join personnage per on pp.personnage_id = per.id
+                        where p.id = :id`,
+                        {type: QueryTypes.SELECT, replacements: {id: id}, nest: true})
+        .then(r => {
+            result = parseFullPins(r[0])
+        })
 
     return result
 }

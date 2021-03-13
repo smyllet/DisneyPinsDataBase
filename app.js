@@ -73,3 +73,6 @@ app.use('/', require('./routes/admin'))
 
 // Developer page
 app.use('/', require('./routes/developer'))
+
+// API page
+app.use('/', require('./routes/api'))
