@@ -3,6 +3,7 @@ const reqAnalyser = require('../function/reqAnalyser')
 
 const db_application = require('../model/db_application')
 const db_pins = require('../model/db_pins')
+const db_series = require('../model/db_series')
 
 /* API Authentication */
 router.get('/api/*', (req, res, next) => {
@@ -47,6 +48,7 @@ router.get('/api/test', (req, res) => {
     })
 })
 
+/* - - - - - Pins - - - - - */
 /* API GET - Pins by id */
 router.get('/api/pins/id/:id', (req, res) => {
     db_pins.getFullPinsById(req.params.id).then(result => {
@@ -60,6 +62,29 @@ router.get('/api/pins/id/:id', (req, res) => {
         res.status(500).json({
             request: {
                 pins_id: req.params.id
+            },
+            error: {
+                status: 500,
+                code: "database_error",
+                message: "an error occurred during the request to the database"
+            }
+        })
+    })
+})
+
+/* - - - - - Series - - - - - */
+router.get('/api/series/id/:id', (req, res) => {
+    db_series.getFullSeriesById(req.params.id).then(result => {
+        res.json({
+            request: {
+                series_id: req.params.id
+            },
+            result: (result && result.id) ? result : null
+        })
+    }).catch(() => {
+        res.status(500).json({
+            request: {
+                series_id: req.params.id
             },
             error: {
                 status: 500,
