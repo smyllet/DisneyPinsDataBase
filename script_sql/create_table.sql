@@ -73,11 +73,14 @@ create table Park
 );
 
 -- Personnage Disney
-create table Personnage
+create table Characters
 (
-    id int primary key not null auto_increment,
-    name varchar(70) not null
+	id int auto_increment,
+	name varchar(70) not null,
+	primary key (id)
 );
+
+
 
 -- Attraction Disneyland
 create table Attraction
@@ -117,14 +120,15 @@ create table Pins
     foreign key (type_id) REFERENCES Type(id)
 );
 
--- Table pour faire la liaison entre la table pins et personnage
-create table Pins_Personnage
+-- Table pour faire la liaison entre la table pins et characters
+create table Pins_Characters
 (
-    id int primary key not null auto_increment,
-    pins_id int not null,
-    personnage_id int not null,
-    foreign key (pins_id) references Pins(id),
-    foreign key (personnage_id) references Personnage(id)
+	id int auto_increment,
+	pins_id int not null,
+	characters_id int not null,
+	primary key (id),
+	foreign key (pins_id) references Pins (id),
+	foreign key (characters_id) references Characters (id)
 );
 
 -- Table pour fait la liaison entre la table pins et attraction

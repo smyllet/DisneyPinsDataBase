@@ -5,6 +5,8 @@ const db_application = require('../model/db_application')
 const db_pins = require('../model/db_pins')
 const db_series = require('../model/db_series')
 const db_park = require('../model/db_park')
+const db_country = require('../model/db_country')
+const db_character = require('../model/db_characters')
 
 /* API Authentication */
 router.get('/api/*', (req, res, next) => {
@@ -111,6 +113,54 @@ router.get('/api/park/id/:id', (req, res) => {
         res.status(500).json({
             request: {
                 park_id: req.params.id
+            },
+            error: {
+                status: 500,
+                code: "database_error",
+                message: "an error occurred during the request to the database"
+            }
+        })
+    })
+})
+
+/* - - - - - Country - - - - - */
+/* API GET - Country by id */
+router.get('/api/country/id/:id', (req, res) => {
+    db_country.getFullCountryById(req.params.id).then(result => {
+        res.json({
+            request: {
+                country_id: req.params.id
+            },
+            result: (result && result.id) ? result : null
+        })
+    }).catch(() => {
+        res.status(500).json({
+            request: {
+                country_id: req.params.id
+            },
+            error: {
+                status: 500,
+                code: "database_error",
+                message: "an error occurred during the request to the database"
+            }
+        })
+    })
+})
+
+/* - - - - - Character - - - - - */
+/* API GET - Character by id */
+router.get('/api/character/id/:id', (req, res) => {
+    db_character.getFullCharacterById(req.params.id).then(result => {
+        res.json({
+            request: {
+                character_id: req.params.id
+            },
+            result: (result && result.id) ? result : null
+        })
+    }).catch(() => {
+        res.status(500).json({
+            request: {
+                character_id: req.params.id
             },
             error: {
                 status: 500,

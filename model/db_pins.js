@@ -5,9 +5,9 @@ function parseFullPins(pins) {
     let characters = []
     let attractions = []
 
-    if(pins.personnages_id && pins.personnages_name) {
-        let id_list = pins.personnages_id.split(';')
-        let name_list = pins.personnages_name.split(';')
+    if(pins.characters_id && pins.characters_name) {
+        let id_list = pins.characters_id.split(';')
+        let name_list = pins.characters_name.split(';')
 
         id_list.forEach((id, index) => {
             let name = name_list[index]
@@ -32,8 +32,8 @@ function parseFullPins(pins) {
     pins.characters = characters
     pins.attractions = attractions
 
-    delete pins.personnages_id
-    delete pins.personnages_name
+    delete pins.characters_id
+    delete pins.characters_name
     delete pins.attractions_id
     delete pins.attractions_name
 
@@ -52,7 +52,7 @@ exports.createPins = async (name, release_date, edition_number, serie_id, type_i
                 if(personnage && (personnage.length > 0)) {
                     let valList = []
                     personnage.forEach(() => valList.push(`(${pins_id}, ?)`))
-                    await database.query(`insert into Pins_Personnage (pins_id, personnage_id) VALUES ${valList.join(',')}`, {type: QueryTypes.INSERT, replacements: personnage}).catch(e => {
+                    await database.query(`insert into Pins_Characters (pins_id, characters_id) VALUES ${valList.join(',')}`, {type: QueryTypes.INSERT, replacements: personnage}).catch(e => {
                         console.error(e)
                         result = false
                     })
@@ -77,7 +77,7 @@ exports.getFullPinsById = async (id) => {
     let result = null
     let database = db_model.getDatabase()
 
-    await database.query(`select p.id, p.name, p.release_date, p.edition_number, s.id as 'series.id', s.name as 'series.name', park.id as 'series.park.id', park.name as 'series.park.name', c.id as 'series.park.country.id', c.name as 'series.park.country.name', t.id as 'type.id', t.name as 'type.name', GROUP_CONCAT(per.id SEPARATOR ';') as 'personnages_id', GROUP_CONCAT(per.name SEPARATOR ';') as 'personnages_name', GROUP_CONCAT(a.id SEPARATOR ';') as 'attractions_id', GROUP_CONCAT(a.name SEPARATOR ';') as 'attractions_name'
+    await database.query(`select p.id, p.name, p.release_date, p.edition_number, s.id as 'series.id', s.name as 'series.name', park.id as 'series.park.id', park.name as 'series.park.name', c.id as 'series.park.country.id', c.name as 'series.park.country.name', t.id as 'type.id', t.name as 'type.name', GROUP_CONCAT(ch.id SEPARATOR ';') as 'characters_id', GROUP_CONCAT(ch.name SEPARATOR ';') as 'characters_name', GROUP_CONCAT(a.id SEPARATOR ';') as 'attractions_id', GROUP_CONCAT(a.name SEPARATOR ';') as 'attractions_name'
                         from pins p 
                         inner join serie s on p.serie_id = s.id
                         inner join park on s.park_id = park.id
@@ -85,8 +85,8 @@ exports.getFullPinsById = async (id) => {
                         inner join type t on p.type_id = t.id
                         left join pins_attraction pa on p.id = pa.pins_id
                         left join attraction a on pa.attraction_id = a.id
-                        left join pins_personnage pp on p.id = pp.pins_id
-                        left join personnage per on pp.personnage_id = per.id
+                        left join pins_characters pc on p.id = pc.pins_id
+                        left join characters ch on pc.characters_id = ch.id
                         where p.id = :id`,
                         {type: QueryTypes.SELECT, replacements: {id: id}, nest: true})
         .then(r => {
