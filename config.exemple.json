@@ -1,7 +1,8 @@
 {
   "webServer":
   {
-    "port": 3000,
+    "redirect80toHttps": true,
+    "portHttps": 443,
     "address": "127.0.0.1"
   },
   "database":

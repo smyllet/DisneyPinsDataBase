@@ -36,14 +36,24 @@ app.locals = {
 app.set('port', config.webServer.port)
 const sslOption = {key: fs.readFileSync('ssl/key.pem'), cert: fs.readFileSync('ssl/cert.pem')}
 
+// - - - Création du serveur http pour la redirection https - - - //
+// Si la redirection est activé dans la config
+if(config.webServer.redirect80toHttps) {
+    require('http').createServer((req, res) => {
+        console.log(`https://${req.headers.host}${(config.webServer.port === 443) ? '' : ':' + req.headers.host}${req.url}`)
+        res.writeHead(301, {"Location": `https://${req.headers.host}${(config.webServer.portHttps === 443) ? '' : ':' + config.webServer.portHttps}${req.url}`})
+        res.end()
+    }).listen(80)
+}
+
 // - - - Création du serveur HTTPS - - - //
 const server = https.createServer(sslOption, app)
-server.listen(config.webServer.port)
+server.listen(config.webServer.portHttps)
 
 // - - - Serveur Event - - - //
 // Quand le serveur est prêt
 server.on('listening', () => {
-    console.log(`Serveur prêt et à l'écoute à l'adresse ${config.webServer.address}:${config.webServer.port}`)
+    console.log(`Serveur prêt et à l'écoute à l'adresse ${config.webServer.address}:${config.webServer.portHttps}`)
 })
 
 // - - - Express Route - - - //
