@@ -77,21 +77,39 @@ exports.getFullPinsById = async (id) => {
     let result = null
     let database = db_model.getDatabase()
 
-    await database.query(`select p.id, p.name, p.release_date, p.edition_number, s.id as 'series.id', s.name as 'series.name', park.id as 'series.park.id', park.name as 'series.park.name', c.id as 'series.park.country.id', c.name as 'series.park.country.name', t.id as 'type.id', t.name as 'type.name', GROUP_CONCAT(ch.id SEPARATOR ';') as 'characters_id', GROUP_CONCAT(ch.name SEPARATOR ';') as 'characters_name', GROUP_CONCAT(a.id SEPARATOR ';') as 'attractions_id', GROUP_CONCAT(a.name SEPARATOR ';') as 'attractions_name'
+    await database.query(`select p.id, p.name, p.release_date, p.edition_number, s.id as 'series.id', s.name as 'series.name', park.id as 'series.park.id', park.name as 'series.park.name', c.id as 'series.park.country.id', c.name as 'series.park.country.name', t.id as 'type.id', t.name as 'type.name'
                         from pins p 
                         inner join serie s on p.serie_id = s.id
                         inner join park on s.park_id = park.id
                         inner join country c on park.country_id = c.id
                         inner join type t on p.type_id = t.id
-                        left join pins_attraction pa on p.id = pa.pins_id
-                        left join attraction a on pa.attraction_id = a.id
-                        left join pins_characters pc on p.id = pc.pins_id
-                        left join characters ch on pc.characters_id = ch.id
                         where p.id = :id`,
                         {type: QueryTypes.SELECT, replacements: {id: id}, nest: true})
         .then(r => {
-            result = parseFullPins(r[0])
+            result = r[0]
         })
+
+    if(result) {
+        await database.query(`select c.id, c.name
+                           from pins_characters pc
+                           inner join characters c on pc.characters_id = c.id
+                           where pc.pins_id = :id`,
+            {type: QueryTypes.SELECT, replacements: {id: id}, nest: true})
+            .then(r => {
+                result.characters = r
+            })
+
+        await database.query(`select a.id, a.name, p.id as 'park.id', p.name as 'park.name', c.id as 'park.country.id', c.name as 'park.country.name'
+                            from pins_attraction pa
+                            inner join attraction a on pa.attraction_id = a.id
+                            inner join park p on a.park_id = p.id
+                            inner join country c on p.country_id = c.id
+                            where pa.pins_id = :id`,
+            {type: QueryTypes.SELECT, replacements: {id: id}, nest: true})
+            .then(r => {
+                result.attractions = r
+            })
+    }
 
     return result
 }
