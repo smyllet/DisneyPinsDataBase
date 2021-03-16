@@ -57,6 +57,8 @@ insert into Serie (name, park_id) value ('Fun Adventure',3);
 insert into Serie_Contributor (serie_id, contributor_id) VALUES (last_insert_id(), 1);
 
 -- Insertion pins
+set @contributor_id = 1;
+
 insert into Pins(name, release_date, edition_number, serie_id, type_id) value ('World\'s Best Friends Mike & Sully', '2020-10-24', 700, 1, 1);
 set @pins_id = LAST_INSERT_ID();
 insert into Pins_Contributor (pins_id, contributor_id) values (@pins_id, @contributor_id);

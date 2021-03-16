@@ -7,8 +7,8 @@
   },
   "database":
   {
-    "login": "",
-    "password": "",
+    "login": "dpdb",
+    "password": "password",
     "server": "127.0.0.1",
     "port": "3306",
     "dialect": "mysql",

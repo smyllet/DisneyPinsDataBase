@@ -1,0 +1,38 @@
+version: "3.9"
+services:
+  mysql:
+    image: mysql:8.0.23
+    ports:
+      - "3306:3306"
+    restart: always
+    networks:
+      - dpdb-network
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: dpdb
+      MYSQL_USER: dpdb
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./script_sql/create_table.sql:/docker-entrypoint-initdb.d/1create_table.sql
+      - ./script_sql/create_vues.sql:/docker-entrypoint-initdb.d/2create_vues.sql
+      - ./script_sql/create_procedure.sql:/docker-entrypoint-initdb.d/3create_procedure.sql
+      - ./script_sql/insert_data.sql:/docker-entrypoint-initdb.d/4insert_data.sql
+      - ./script_sql/insert_optional_data.sql:/docker-entrypoint-initdb.d/5insert_optional_data.sql
+    command: --lower_case_table_names=1 --log_bin_trust_function_creators=1
+  node:
+    build:
+      context: .
+    restart: always
+    depends_on:
+      - mysql
+    networks:
+      - dpdb-network
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - .:/home/app
+      - /home/app/node_modules/
+networks:
+  dpdb-network:
+    name: dpdb-network

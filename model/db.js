@@ -20,8 +20,10 @@ exports.connexion = () => {
     })
 
     database.authenticate().then((err) => {
-        if(err) console.error("Erreur de connexion à la base de donnée : " + err)
-        else console.log("Connexion à la base de donnée réussi")
+        console.log("Connexion à la base de donnée réussi")
+    }).catch(err => {
+        console.error("Erreur de connexion à la base de donnée : " + err)
+        setTimeout(this.connexion, 5000)
     })
 }
 
