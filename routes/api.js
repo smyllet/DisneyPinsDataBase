@@ -1,5 +1,4 @@
 const router = require('express').Router()
-const reqAnalyser = require('../function/reqAnalyser')
 
 const db_application = require('../model/db_application')
 const db_pins = require('../model/db_pins')
@@ -7,6 +6,8 @@ const db_series = require('../model/db_series')
 const db_park = require('../model/db_park')
 const db_country = require('../model/db_country')
 const db_character = require('../model/db_characters')
+const db_attraction = require('../model/db_attraction')
+const db_type = require('../model/db_type')
 
 /* API Authentication */
 router.get('/api/*', (req, res, next) => {
@@ -99,6 +100,78 @@ router.get('/api/series/:id', (req, res) => {
     })
 })
 
+/* - - - - - Character - - - - - */
+/* API GET - Character by id */
+router.get('/api/character/:id', (req, res) => {
+    db_character.getFullCharacterById(req.params.id).then(result => {
+        res.json({
+            parameters: {
+                character_id: req.params.id
+            },
+            result: (result && result.id) ? result : null
+        })
+    }).catch(() => {
+        res.status(500).json({
+            parameters: {
+                character_id: req.params.id
+            },
+            error: {
+                status: 500,
+                code: "database_error",
+                message: "an error occurred during the request to the database"
+            }
+        })
+    })
+})
+
+/* - - - - - Attraction - - - - - */
+/* API GET - Attraction by id */
+router.get('/api/attraction/:id', (req, res) => {
+    db_attraction.getFullAttractionById(req.params.id).then(result => {
+        res.json({
+            parameters: {
+                attraction__id: req.params.id
+            },
+            result: (result && result.id) ? result : null
+        })
+    }).catch(() => {
+        res.status(500).json({
+            parameters: {
+                attraction_id: req.params.id
+            },
+            error: {
+                status: 500,
+                code: "database_error",
+                message: "an error occurred during the request to the database"
+            }
+        })
+    })
+})
+
+/* - - - - - Type - - - - - */
+/* API GET - Type by id */
+router.get('/api/type/:id', (req, res) => {
+    db_type.getFullTypeById(req.params.id).then(result => {
+        res.json({
+            parameters: {
+                type_id: req.params.id
+            },
+            result: (result && result.id) ? result : null
+        })
+    }).catch(() => {
+        res.status(500).json({
+            parameters: {
+                type_id: req.params.id
+            },
+            error: {
+                status: 500,
+                code: "database_error",
+                message: "an error occurred during the request to the database"
+            }
+        })
+    })
+})
+
 /* - - - - - Park - - - - - */
 /* API GET - Park by id */
 router.get('/api/park/:id', (req, res) => {
@@ -147,32 +220,8 @@ router.get('/api/country/:id', (req, res) => {
     })
 })
 
-/* - - - - - Character - - - - - */
-/* API GET - Character by id */
-router.get('/api/character/:id', (req, res) => {
-    db_character.getFullCharacterById(req.params.id).then(result => {
-        res.json({
-            parameters: {
-                character_id: req.params.id
-            },
-            result: (result && result.id) ? result : null
-        })
-    }).catch(() => {
-        res.status(500).json({
-            parameters: {
-                character_id: req.params.id
-            },
-            error: {
-                status: 500,
-                code: "database_error",
-                message: "an error occurred during the request to the database"
-            }
-        })
-    })
-})
-
 /* API GET 404 */
-router.get('/api/*', (req, res, next) => {
+router.get('/api/*', (req, res) => {
     res.sendStatus(404)
 })
 

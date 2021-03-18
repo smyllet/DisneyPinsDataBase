@@ -30,7 +30,7 @@ $(document).ready(() => {
             menu: '<ul class="typeahead dropdown-menu dropdown-menu-scroll" role="listbox"></ul>',
             item: '<li><a class="dropdown-item" href="#" role="option"></a></li>',
             autoSelect: true,
-            source: function (query) {
+            source: function () {
                 return autocomplete.personnages
             },
             afterSelect: function() {
@@ -50,7 +50,7 @@ $(document).ready(() => {
             menu: '<ul class="typeahead dropdown-menu dropdown-menu-scroll" role="listbox"></ul>',
             item: '<li><a class="dropdown-item" href="#" role="option"></a></li>',
             autoSelect: true,
-            source: function (query) {
+            source: function () {
                 return autocomplete.attractions
             },
             afterSelect: function() {
@@ -119,6 +119,10 @@ $.get('/contribute/autocomplete', (data) => {
     autocomplete.series = data.series
     autocomplete.attractions = data.attractions
     autocomplete.personnages = data.personnages
+
+    data.type.forEach(type => {
+        $('#add-pins_input_type').append(`<option value=${type.id}>${type.name}</option>`)
+    })
 })
 
 

@@ -111,6 +111,20 @@ components:
           minimum: 1
         name:
           type: string
+    attraction:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        nb_pins:
+          type: integer
+        nb_series:
+          type: integer
+        park:
+          $ref: '#/components/schemas/minimum_park'
     minimum_attraction:
       type: object
       properties:
@@ -119,6 +133,20 @@ components:
           minimum: 1
         name:
           type: string
+        park:
+          $ref: '#/components/schemas/minimum_park'
+    type:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        nb_pins:
+          type: integer
+        nb_series:
+          type: integer
     minimum_type:
       type: object
       properties:
@@ -279,6 +307,76 @@ paths:
                         minimum: 1
                   result:
                     $ref: '#/components/schemas/character'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /attraction/{id}:
+    get:
+      summary: GET Attraction BY ID.
+      description: Get a attraction using its ID
+      tags:
+        - Attraction
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a attraction
+      responses:
+        '200':
+          description: Attraction on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      attraction_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/attraction'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /type/{id}:
+    get:
+      summary: GET Type BY ID.
+      description: Get a type using its ID
+      tags:
+        - Type
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a Type
+      responses:
+        '200':
+          description: Type on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      type_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/type'
         '400':
           $ref: '#/components/responses/noToken'
         '401':

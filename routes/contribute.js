@@ -3,6 +3,7 @@ const reqAnalyser = require('../function/reqAnalyser')
 const db_series = require('../model/db_series')
 const db_attraction = require('../model/db_attraction')
 const db_personnage = require('../model/db_characters')
+const db_type = require('../model/db_type')
 const db_pins = require('../model/db_pins')
 
 /* Get Contribution Page */
@@ -38,11 +39,13 @@ router.get('/contribute/autocomplete', async function(req, res) {
     let series = await db_series.getSeriesList()
     let attractions = await db_attraction.getAttractionList()
     let personnages = await db_personnage.getCharactersList()
+    let type = await db_type.getTypeList()
 
     res.json({
         series: series,
         attractions: attractions,
-        personnages: personnages
+        personnages: personnages,
+        type: type
     })
 })
 
