@@ -99,6 +99,10 @@ components:
           minimum: 1
         name:
           type: string
+        nb_pins:
+          type: integer
+        nb_series:
+          type: integer
     minimum_character:
       type: object
       properties:
@@ -133,6 +137,10 @@ components:
           type: string
         nb_series:
           type: integer
+        nb_pins:
+          type: integer
+        nb_attractions:
+          type: integer
         country:
           $ref: '#/components/schemas/minimum_country'
     minimum_park:
@@ -153,6 +161,14 @@ components:
           minimum: 1
         name:
           type: string
+        nb_park:
+          type: integer
+        nb_series:
+          type: integer
+        nb_pins:
+          type: integer
+        nb_attractions:
+          type: integer
     minimum_country:
       type: object
       properties:
