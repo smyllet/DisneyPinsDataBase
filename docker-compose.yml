@@ -12,6 +12,7 @@ services:
       MYSQL_DATABASE: dpdb
       MYSQL_USER: dpdb
       MYSQL_PASSWORD: password
+      LANG : C.UTF-8
     volumes:
       - ./script_sql/create_table.sql:/docker-entrypoint-initdb.d/1create_table.sql
       - ./script_sql/create_vues.sql:/docker-entrypoint-initdb.d/2create_vues.sql

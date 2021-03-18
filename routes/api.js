@@ -53,17 +53,17 @@ router.get('/api/test', (req, res) => {
 
 /* - - - - - Pins - - - - - */
 /* API GET - Pins by id */
-router.get('/api/pins/id/:id', (req, res) => {
+router.get('/api/pins/:id', (req, res) => {
     db_pins.getFullPinsById(req.params.id).then(result => {
         res.json({
-            request: {
+            parameters: {
                 pins_id: req.params.id
             },
             result: (result && result.id) ? result : null
         })
     }).catch(() => {
         res.status(500).json({
-            request: {
+            parameters: {
                 pins_id: req.params.id
             },
             error: {
@@ -77,17 +77,17 @@ router.get('/api/pins/id/:id', (req, res) => {
 
 /* - - - - - Series - - - - - */
 /* API GET - Series by id */
-router.get('/api/series/id/:id', (req, res) => {
+router.get('/api/series/:id', (req, res) => {
     db_series.getFullSeriesById(req.params.id).then(result => {
         res.json({
-            request: {
+            parameters: {
                 series_id: req.params.id
             },
             result: (result && result.id) ? result : null
         })
     }).catch(() => {
         res.status(500).json({
-            request: {
+            parameters: {
                 series_id: req.params.id
             },
             error: {
@@ -101,17 +101,17 @@ router.get('/api/series/id/:id', (req, res) => {
 
 /* - - - - - Park - - - - - */
 /* API GET - Park by id */
-router.get('/api/park/id/:id', (req, res) => {
+router.get('/api/park/:id', (req, res) => {
     db_park.getFullParkById(req.params.id).then(result => {
         res.json({
-            request: {
+            parameters: {
                 park_id: req.params.id
             },
             result: (result && result.id) ? result : null
         })
     }).catch(() => {
         res.status(500).json({
-            request: {
+            parameters: {
                 park_id: req.params.id
             },
             error: {
@@ -125,17 +125,17 @@ router.get('/api/park/id/:id', (req, res) => {
 
 /* - - - - - Country - - - - - */
 /* API GET - Country by id */
-router.get('/api/country/id/:id', (req, res) => {
+router.get('/api/country/:id', (req, res) => {
     db_country.getFullCountryById(req.params.id).then(result => {
         res.json({
-            request: {
+            parameters: {
                 country_id: req.params.id
             },
             result: (result && result.id) ? result : null
         })
     }).catch(() => {
         res.status(500).json({
-            request: {
+            parameters: {
                 country_id: req.params.id
             },
             error: {
@@ -149,17 +149,17 @@ router.get('/api/country/id/:id', (req, res) => {
 
 /* - - - - - Character - - - - - */
 /* API GET - Character by id */
-router.get('/api/character/id/:id', (req, res) => {
+router.get('/api/character/:id', (req, res) => {
     db_character.getFullCharacterById(req.params.id).then(result => {
         res.json({
-            request: {
+            parameters: {
                 character_id: req.params.id
             },
             result: (result && result.id) ? result : null
         })
     }).catch(() => {
         res.status(500).json({
-            request: {
+            parameters: {
                 character_id: req.params.id
             },
             error: {

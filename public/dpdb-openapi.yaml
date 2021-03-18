@@ -1,0 +1,341 @@
+openapi: 3.0.0
+info:
+  title: Disney Pins DataBase
+  description: Disney Pins DataBase is an API which aims to list every Pin's from all Disneyland parks. This project is currently under progress, and will be presented at the E4's test from the BTS SIO, specialized in SLAM.
+  version: 1.0.0
+servers:
+  - url: https://127.0.0.1/api
+    description: Local server test
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: token
+  responses:
+    noToken:
+      description: Missing API token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    invalideToken:
+      description: Invalid API Token
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+    databaseError:
+      description: An error occurred during the request to the database
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error'
+  schemas:
+    error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            status:
+              type: integer
+            code:
+              type: string
+            message:
+              type: string
+    pins:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        release_date:
+          type: string
+        edition_number:
+          type: integer
+          minimum: 1
+        series:
+          $ref: '#/components/schemas/minimum_series'
+        type:
+          $ref: '#/components/schemas/minimum_type'
+        characters:
+          type: array
+          items:
+            $ref: '#/components/schemas/minimum_character'
+        attractions:
+          type: array
+          items:
+            $ref: '#/components/schemas/minimum_attraction'
+    series:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        nb_pins:
+          type: integer
+        park:
+          $ref: '#/components/schemas/minimum_park'
+    minimum_series:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        park:
+          $ref: '#/components/schemas/minimum_park'
+    character:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+    minimum_character:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+    minimum_attraction:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+    minimum_type:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+    park:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        nb_series:
+          type: integer
+        country:
+          $ref: '#/components/schemas/minimum_country'
+    minimum_park:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        country:
+          $ref: '#/components/schemas/minimum_country'
+    country:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+    minimum_country:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+security:
+  - apiKeyAuth: []
+paths:
+  /pins/{id}:
+    get:
+      summary: GET Pins BY ID.
+      description: Get a pins using its ID
+      tags:
+        - Pins
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a Pins
+      responses:
+        '200':
+          description: Pins on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      pins_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/pins'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /series/{id}:
+    get:
+      summary: GET Series BY ID.
+      description: Get a series using its ID
+      tags:
+        - Series
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a collection
+      responses:
+        '200':
+          description: Series on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      series_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/series'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /character/{id}:
+    get:
+      summary: GET Character BY ID.
+      description: Get a character using its ID
+      tags:
+        - Character
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a character
+      responses:
+        '200':
+          description: Character on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      character_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/character'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /park/{id}:
+    get:
+      summary: GET Park BY ID.
+      description: Get a park using its ID
+      tags:
+        - Park
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a park
+      responses:
+        '200':
+          description: Park on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      park_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/park'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /country/{id}:
+    get:
+      summary: GET Country BY ID.
+      description: Get a country using its ID
+      tags:
+        - Country
+      parameters:
+        - in: path
+          schema:
+            type: integer
+          required: true
+          name: id
+          description: ID of a Country
+      responses:
+        '200':
+          description: Country on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      country_id:
+                        type: string
+                        minimum: 1
+                  result:
+                    $ref: '#/components/schemas/country'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'

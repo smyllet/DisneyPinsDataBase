@@ -1,0 +1,70 @@
+.try-out__btn {
+    border-color: #CCCCCC !important;
+}
+
+.swagger-ui .info .title, .swagger-ui a.nostyle, .swagger-ui .responses-inner h4, .swagger-ui .responses-inner h5, .swagger-ui a.nostyle, .swagger-ui .opblock-description-wrapper p, .swagger-ui .opblock-external-docs-wrapper p, .swagger-ui .opblock-title_normal p, .swagger-ui a.nostyle:visited, .swagger-ui .model, .swagger-ui .opblock-tag, .swagger-ui .model-title, .swagger-ui, .swagger-ui .info .base-url, .swagger-ui section.models h4, .swagger-ui .prop-type, .swagger-ui .scheme-container .schemes > label, .swagger-ui .parameter__name, .swagger-ui .parameter__type, .swagger-ui .parameter__deprecated, .swagger-ui .parameter__in, .swagger-ui table thead tr th, .swagger-ui .response-col_status, .swagger-ui table thead tr td, .swagger-ui .opblock .opblock-section-header h4, .swagger-ui label, .swagger-ui .tab li, .swagger-ui .opblock .opblock-section-header label, .swagger-ui .btn {
+    color: #CCCCCC;
+}
+
+.opblock-summary-description {
+    color: #CCCCCC !important;
+}
+
+body, .swagger-ui .info .title, .swagger-ui .scheme-container, .swagger-ui select {
+    background-color: #222;
+    color: #CCC;
+}
+.swagger-ui .opblock .opblock-section-header {
+    background-color: transparent;
+}
+.swagger-ui textarea, .swagger-ui input[type=text] {
+    background-color: #41444e;
+    color: #CCC;
+}
+.swagger-ui .topbar {
+    background-color: #000
+}
+
+.arrow , #large-arrow-down, .model-toggl .collapsed{
+    fill: #CCC;
+}
+
+.swagger-ui .opblock-tag {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.swagger-ui .info .url {
+    color: #04A8E2;
+}
+
+.swagger-ui .version-stamp {
+    background-color: #04A8E2 !important;
+}
+
+.description p {
+    color: #CCCCCC !important;
+}
+
+.modal-ux-inner {
+    background-color: #404040;
+}
+
+.modal-ux-inner h3 {
+    color: #CCCCCC !important;
+}
+
+.modal-ux-inner h4 {
+    color: #CCCCCC !important;
+}
+
+.modal-ux-inner h4 code {
+    color: #04A8E2 !important;
+}
+
+.modal-ux-content .wrapper p {
+    color: #CCCCCC !important;
+}
+
+.modal-ux-content .wrapper code {
+    color: #04A8E2 !important;
+}

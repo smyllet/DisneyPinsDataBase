@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="<%=navLang%>">
+<head>
+    <title><%=lang.contribute.name[navLang]%> - Disney Pins DataBase</title>
+    <%- include('../partials/head') %>
+
+    <!-- Swagger UI -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.45.0/swagger-ui.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.45.0/swagger-ui-bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/3.45.0/swagger-ui-standalone-preset.js"></script>
+
+
+    <link rel="stylesheet" href="/css/documentation.css">
+
+    <script src="/javascript/documentation.js"></script>
+</head>
+<body>
+<!-- Haut de page -->
+<header>
+    <%- include('../partials/header') %>
+</header>
+
+<!-- Contenue de la page -->
+<main>
+    <div class="swagger-ui"></div>
+</main>
+
+<!-- Pied de page -->
+<footer>
+    <%- include('../partials/footer') %>
+</footer>
+</body>
+</html>

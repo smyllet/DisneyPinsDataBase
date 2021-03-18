@@ -2,7 +2,6 @@
 const https = require('https')
 const express = require('express')
 const session = require('express-session')
-const cookieParser = require('cookie-parser')
 const bodyparser = require('body-parser')
 const path = require('path')
 const fs = require('fs')
@@ -21,10 +20,14 @@ app.use(express.json())
 app.use(bodyparser.urlencoded({extended : true}))
 app.use(express.static(path.join(__dirname, 'public'))) // Dossier accessible en public
 app.use(session({
-    secret: "c'est secret",
+    secret: require('crypto').randomBytes(64).toString('hex'),
     resave: false,
     saveUninitialized: true,
-    cookie: {secure: true}
+    name: "dpdb-session",
+    cookie: {
+        secure: true,
+        httpOnly: true
+    }
 }))
 app.set('view engine', 'ejs')
 app.disable('view cache')
@@ -86,3 +89,6 @@ app.use('/', require('./routes/developer'))
 
 // API page
 app.use('/', require('./routes/api'))
+
+// Documentation Page
+app.use('/', require('./routes/documentation'))
