@@ -1,0 +1,26 @@
+# Paramètre pour express
+webServer:
+  # Activer la redirection http vers https
+  redirect80toHttps: true
+  # Port utilisé pour accède au site (uniquement en https)
+  portHttps: 443
+  # Adresse sur le quel le serveur écoute (non prise ne compte pour le moment
+  address: '127.0.0.1'
+# Paramètre de la base de donnée
+database:
+  # Identifiant
+  login: 'dpdb'
+  # Mot de passe
+  password: 'password'
+  # Adresse du serveur de base de donnée (ATTENTION : si vous utilisé le docker-compose, l'adresse du serveur est 'mysql')
+  server: '127.0.0.1'
+  # Port de la base de donnée
+  port: '3306'
+  # Language de la base donnée (n'a pas été testé avec d'autre language que mysql)
+  dialect: 'mysql'
+  # Nom de la base de donnée
+  database: 'dpdb'
+# Paramètre pour l'API
+api:
+  # Clé secret servant à générer les tokens d'application
+  jwtSecretKey: ''

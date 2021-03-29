@@ -7,7 +7,9 @@ const path = require('path')
 const fs = require('fs')
 
 // - - - Import Config - - - //
-const config = require('./config.json')
+const config = require('./function/config')()
+// Stoppé l'exécution si le fichier config est manquant
+if(!config) return
 
 // - - - Instantiation de Express - - - //
 const app = express()
@@ -36,7 +38,7 @@ app.locals = {
     lang: require('./lang.json')
 }
 
-app.set('port', config.webServer.port)
+app.set('port', config.webServer.portHttps)
 const sslOption = {key: fs.readFileSync('ssl/key.pem'), cert: fs.readFileSync('ssl/cert.pem')}
 
 // - - - Création du serveur http pour la redirection https - - - //

@@ -1,7 +1,7 @@
 //const mysql = require('mysql')
 const {Sequelize} = require('sequelize')
 
-const config = require('../config.json')
+const config = require('../function/config')()
 
 // - - - Instantiation de sequelize - - - //
 let database

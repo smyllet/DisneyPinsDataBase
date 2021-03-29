@@ -2,7 +2,7 @@ const router = require('express').Router()
 const reqAnalyser = require('../function/reqAnalyser')
 const jwt = require('jsonwebtoken')
 
-const config = require('../config.json')
+const config = require('../function/config')()
 
 const db_application = require('../model/db_application')
 
