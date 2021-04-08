@@ -14,7 +14,7 @@ components:
       name: token
   responses:
     noToken:
-      description: Missing API token
+      description: Request parameters missing or invalide
       content:
         application/json:
           schema:
@@ -26,7 +26,7 @@ components:
           schema:
             $ref: '#/components/schemas/error'
     databaseError:
-      description: An error occurred during the request to the database
+      description: An error occurred while processing the request
       content:
         application/json:
           schema:
@@ -69,6 +69,23 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/minimum_attraction'
+    minimum_pins:
+      type: object
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+        release_date:
+          type: string
+        edition_number:
+          type: integer
+          minimum: 1
+        series:
+          $ref: '#/components/schemas/minimum_series'
+        type:
+          $ref: '#/components/schemas/minimum_type'
     series:
       type: object
       properties:
@@ -237,6 +254,109 @@ paths:
                         minimum: 1
                   result:
                     $ref: '#/components/schemas/pins'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /pins:
+    get:
+      summary: GET Pins list.
+      description: Get a list of pins
+      tags:
+        - Pins
+      parameters:
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+            default: 50
+          required: false
+          name: limit
+          description: Limit of pins to return
+        - in: header
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          required: false
+          name: offset
+          description: Ignore X first result
+        - in: header
+          schema:
+            type: string
+          required: false
+          name: from_release_date
+          description: Only pins released from this date (include)
+        - in: header
+          schema:
+            type: string
+          required: false
+          name: until_release_date
+          description: Only pins released until this date (include)
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: min_edition_number
+          description: Only pins with minimum to this number of edition (include)
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: max_edition_number
+          description: Only pins with maximum to this number of edition (include)
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: type_id
+          description: Only pins of this type
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: series_id
+          description: Only pins in this series
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: park_id
+          description: Only pins in this park (ignore if series_id is defined)
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: country_id
+          description: Only pins in this country (ignore if series_id or park_id is defined)
+      responses:
+        '200':
+          description: Pins on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      pins_id:
+                        type: string
+                        minimum: 1
+                  nb_result:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/minimum_pins'
         '400':
           $ref: '#/components/responses/noToken'
         '401':

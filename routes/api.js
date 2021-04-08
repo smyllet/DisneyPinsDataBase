@@ -9,6 +9,18 @@ const db_character = require('../model/db_characters')
 const db_attraction = require('../model/db_attraction')
 const db_type = require('../model/db_type')
 
+/* return error function */
+function returnError(res, error, code, message, params) {
+    res.status(error).json({
+        parameters: params,
+        error: {
+            status: error,
+            code: code,
+            message: message
+        }
+    })
+}
+
 /* API Authentication */
 router.get('/api/*', (req, res, next) => {
     let token = req.headers.token
@@ -74,6 +86,108 @@ router.get('/api/pins/:id', (req, res) => {
             }
         })
     })
+})
+
+/* API GET - Pins list */
+router.get('/api/pins', (req, res) => {
+    let params = {
+        limit: 50,
+        offset: 0,
+        from_release_date: null,
+        until_release_date: null,
+        min_edition_number: null,
+        max_edition_number: null,
+        type_id: null,
+        series_id: null,
+        park_id: null,
+        country_id: null
+    }
+
+    try {
+        let limit = req.header('limit')
+        if(limit) {
+            limit = Number(limit)
+            if(!Number.isInteger(limit)) return returnError(res, 400, 'invalid_limit', 'limit parameter must be an integer', params)
+            else if(limit < 1) return returnError(res, 400, 'invalid_limit', 'limit parameter must be greater than or equal to 1', params)
+            else params.limit = limit
+        }
+
+        let offset = req.header('offset')
+        if(offset) {
+            offset = Number(offset)
+            if(!Number.isInteger(offset)) return returnError(res, 400, 'invalid_offset', 'offset parameter must be an integer', params)
+            else if(offset < 0) return returnError(res, 400, 'invalid_offset', 'offset parameter must be greater than or equal to 0', params)
+            else params.offset = offset
+        }
+
+        if(req.header('from_release_date')) {
+            if(Date.parse(req.header('from_release_date'))) params.from_release_date = req.header('from_release_date')
+            else return returnError(res, 400, 'invalid_from_release_date', 'invalide date for from_release_date parameter', params)
+        }
+
+        if(req.header('until_release_date')) {
+            if(Date.parse(req.header('until_release_date'))) params.until_release_date = req.header('until_release_date')
+            else return returnError(res, 400, 'invalid_until_release_date', 'invalide date for until_release_date parameter', params)
+        }
+
+        let min_edition_number = req.header('min_edition_number')
+        if(min_edition_number) {
+            min_edition_number = Number(min_edition_number)
+            if(!Number.isInteger(min_edition_number)) return returnError(res, 400, 'invalid_min_edition_number', 'min_edition_number parameter must be an integer', params)
+            else if(min_edition_number < 1) return returnError(res, 400, 'invalid_min_edition_number', 'min_edition_number parameter must be greater than or equal to 1', params)
+            else params.min_edition_number = min_edition_number
+        }
+
+        let max_edition_number = req.header('max_edition_number')
+        if(max_edition_number) {
+            max_edition_number = Number(max_edition_number)
+            if(!Number.isInteger(max_edition_number)) return returnError(res, 400, 'invalid_max_edition_number', 'max_edition_number parameter must be an integer', params)
+            else if(max_edition_number < 1) return returnError(res, 400, 'invalid_max_edition_number', 'max_edition_number parameter must be greater than or equal to 1', params)
+            else params.max_edition_number = max_edition_number
+        }
+
+        let type_id = req.header('type_id')
+        if(type_id) {
+            type_id = Number(type_id)
+            if(!Number.isInteger(type_id)) return returnError(res, 400, 'invalid_type_id', 'type_id parameter must be an integer', params)
+            else if(type_id < 1) return returnError(res, 400, 'invalid_type_id', 'type_id parameter must be greater than or equal to 1', params)
+            else params.type_id = type_id
+        }
+
+        let series_id = req.header('series_id')
+        if(series_id) {
+            series_id = Number(series_id)
+            if(!Number.isInteger(series_id)) return returnError(res, 400, 'invalid_series_id', 'series_id parameter must be an integer', params)
+            else if(series_id < 1) return returnError(res, 400, 'invalid_series_id', 'series_id parameter must be greater than or equal to 1', params)
+            else params.series_id = series_id
+        }
+
+        let park_id = req.header('park_id')
+        if(park_id && !series_id) {
+            park_id = Number(park_id)
+            if(!Number.isInteger(park_id)) return returnError(res, 400, 'invalid_park_id', 'park_id parameter must be an integer', params)
+            else if(park_id < 1) return returnError(res, 400, 'invalid_park_id', 'park_id parameter must be greater than or equal to 1', params)
+            else params.park_id = park_id
+        }
+
+        let country_id = req.header('country_id')
+        if(country_id && !park_id && !series_id) {
+            country_id = Number(country_id)
+            if(!Number.isInteger(country_id)) return returnError(res, 400, 'invalid_country_id', 'country_id parameter must be an integer', params)
+            else if(country_id < 1) return returnError(res, 400, 'invalid_country_id', 'country_id parameter must be greater than or equal to 1', params)
+            else params.country_id = country_id
+        }
+    } catch (e) {
+        return returnError(res, 500, 'parameters_error', 'an error occurred while processing parameters', params)
+    }
+
+    db_pins.getPinsList(params.limit, params.offset, params.from_release_date, params.until_release_date, params.min_edition_number, params.max_edition_number, params.type_id, params.series_id, params.park_id, params.country_id).then(result => {
+        res.json({
+            parameters: params,
+            nb_result: (result) ? result.length : 0,
+            result: (result) ? result : []
+        })
+    }).catch(() => returnError(res, 500, "database_error", "an error occurred during the request to the database", params))
 })
 
 /* - - - - - Series - - - - - */

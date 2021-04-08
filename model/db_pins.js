@@ -1,45 +1,6 @@
 const db_model = require('./db')
 const {QueryTypes} = require("sequelize");
 
-function parseFullPins(pins) {
-    let characters = []
-    let attractions = []
-
-    if(pins.characters_id && pins.characters_name) {
-        let id_list = pins.characters_id.split(';')
-        let name_list = pins.characters_name.split(';')
-
-        id_list.forEach((id, index) => {
-            let name = name_list[index]
-            if(name) {
-                characters.push({id: id, name: name})
-            }
-        })
-    }
-
-    if(pins.attractions_id && pins.attractions_name) {
-        let id_list = pins.attractions_id.split(';')
-        let name_list = pins.attractions_name.split(';')
-
-        id_list.forEach((id, index) => {
-            let name = name_list[index]
-            if(name) {
-                attractions.push({id: id, name: name})
-            }
-        })
-    }
-
-    pins.characters = characters
-    pins.attractions = attractions
-
-    delete pins.characters_id
-    delete pins.characters_name
-    delete pins.attractions_id
-    delete pins.attractions_name
-
-    return pins
-}
-
 exports.createPins = async (name, release_date, edition_number, serie_id, type_id, contributor_id, personnage, attraction) => {
     let result = false
     let database = db_model.getDatabase()
@@ -110,6 +71,40 @@ exports.getFullPinsById = async (id) => {
                 result.attractions = r
             })
     }
+
+    return result
+}
+
+exports.getPinsList = async (limit, offset, from_release_date, until_release_date, min_edition_number, max_edition_number, type_id, series_id, park_id, country_id) => {
+    let result = null
+    let database = db_model.getDatabase()
+
+    let condition = []
+    let where = ""
+
+    if(from_release_date) condition.push('p.release_date >= :from_release_date')
+    if(until_release_date) condition.push('p.release_date <= :until_release_date')
+    if(min_edition_number) condition.push('p.edition_number >= :min_edition_number')
+    if(max_edition_number) condition.push('p.edition_number <= :max_edition_number')
+    if(type_id) condition.push('t.id = :type_id')
+    if(series_id) condition.push('s.id = :series_id')
+    if(park_id) condition.push('park.id = :park_id')
+    if(country_id) condition.push('c.id = :country_id')
+
+    if(condition.length > 0) where = `where ${condition.join(' AND ')}`
+
+    await database.query(`select p.id, p.name, p.release_date, p.edition_number, s.id as 'series.id', s.name as 'series.name', park.id as 'series.park.id', park.name as 'series.park.name', c.id as 'series.park.country.id', c.name as 'series.park.country.name', t.id as 'type.id', t.name as 'type.name'
+                        from pins p 
+                        inner join serie s on p.serie_id = s.id
+                        inner join park on s.park_id = park.id
+                        inner join country c on park.country_id = c.id
+                        inner join type t on p.type_id = t.id
+                        ${where}
+                        limit :limit offset :offset`,
+        {type: QueryTypes.SELECT, replacements: {limit: limit, offset: offset, from_release_date: from_release_date, until_release_date: until_release_date, min_edition_number: min_edition_number, max_edition_number: max_edition_number, type_id: type_id, series_id: series_id, park_id: park_id, country_id: country_id}, nest: true})
+        .then(r => {
+            result = r
+        })
 
     return result
 }
