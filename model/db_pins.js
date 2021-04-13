@@ -75,7 +75,7 @@ exports.getFullPinsById = async (id) => {
     return result
 }
 
-exports.getPinsList = async (limit, offset, from_release_date, until_release_date, min_edition_number, max_edition_number, type_id, series_id, park_id, country_id) => {
+exports.getPinsList = async (limit, offset, from_release_date, until_release_date, min_edition_number, max_edition_number, type_id, series_id, park_id, country_id, name_includes) => {
     let result = null
     let database = db_model.getDatabase()
 
@@ -90,6 +90,7 @@ exports.getPinsList = async (limit, offset, from_release_date, until_release_dat
     if(series_id) condition.push('s.id = :series_id')
     if(park_id) condition.push('park.id = :park_id')
     if(country_id) condition.push('c.id = :country_id')
+    if(name_includes) condition.push('p.name LIKE :name_includes')
 
     if(condition.length > 0) where = `where ${condition.join(' AND ')}`
 
@@ -101,7 +102,7 @@ exports.getPinsList = async (limit, offset, from_release_date, until_release_dat
                         inner join type t on p.type_id = t.id
                         ${where}
                         limit :limit offset :offset`,
-        {type: QueryTypes.SELECT, replacements: {limit: limit, offset: offset, from_release_date: from_release_date, until_release_date: until_release_date, min_edition_number: min_edition_number, max_edition_number: max_edition_number, type_id: type_id, series_id: series_id, park_id: park_id, country_id: country_id}, nest: true})
+        {type: QueryTypes.SELECT, replacements: {limit: limit, offset: offset, from_release_date: from_release_date, until_release_date: until_release_date, min_edition_number: min_edition_number, max_edition_number: max_edition_number, type_id: type_id, series_id: series_id, park_id: park_id, country_id: country_id, name_includes: '%' + name_includes + '%'}, nest: true})
         .then(r => {
             result = r
         })

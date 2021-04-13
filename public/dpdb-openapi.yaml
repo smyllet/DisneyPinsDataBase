@@ -337,6 +337,12 @@ paths:
           required: false
           name: country_id
           description: Only pins in this country (ignore if series_id or park_id is defined)
+        - in: header
+          schema:
+            type: string
+          required: false
+          name: name_includes
+          description: Only pins including this string in its name
       responses:
         '200':
           description: Pins on JSON format
@@ -387,11 +393,124 @@ paths:
                   parameters:
                     type: object
                     properties:
-                      series_id:
-                        type: string
+                      limit:
+                        type: integer
                         minimum: 1
+                      offset:
+                        type: integer
+                      from_release_date:
+                        type: string
+                      until_release_date:
+                        type: string
+                      min_edition_number:
+                        type: integer
+                      max_edition_number:
+                        type: integer
+                      type_id:
+                        type: integer
+                      series_id:
+                        type: integer
+                      park_id:
+                        type: integer
+                      country_id:
+                        type: integer
+                      name_includes:
+                        type: string
                   result:
                     $ref: '#/components/schemas/series'
+        '400':
+          $ref: '#/components/responses/noToken'
+        '401':
+          $ref: '#/components/responses/invalideToken'
+        '500':
+          $ref: '#/components/responses/databaseError'
+  /series/:
+    get:
+      summary: GET Series list.
+      description: Get a list of series
+      tags:
+        - Series
+      parameters:
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+            default: 50
+          required: false
+          name: limit
+          description: Limit of series to return
+        - in: header
+          schema:
+            type: integer
+            minimum: 0
+            default: 0
+          required: false
+          name: offset
+          description: Ignore X first result
+        - in: header
+          schema:
+            type: integer
+          required: false
+          name: min_nb_pins
+          description: Only series with minimum to this number of pins (include)
+        - in: header
+          schema:
+            type: integer
+          required: false
+          name: max_nb_pins
+          description: Only series with maximum to this number of pins (include)
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: park_id
+          description: Only series in this park
+        - in: header
+          schema:
+            type: integer
+            minimum: 1
+          required: false
+          name: country_id
+          description: Only series in this country (ignore if park_id is defined)
+        - in: header
+          schema:
+            type: string
+          required: false
+          name: name_includes
+          description: Only series including this string in its name
+      responses:
+        '200':
+          description: Series on JSON format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  parameters:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                        minimum: 1
+                      offset:
+                        type: integer
+                      min_nb_pins:
+                        type: integer
+                      max_nb_pins:
+                        type: integer
+                      park_id:
+                        type: integer
+                      country_id:
+                        type: integer
+                      name_includes:
+                        type: string
+                  nb_result:
+                    type: integer
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/series'
         '400':
           $ref: '#/components/responses/noToken'
         '401':

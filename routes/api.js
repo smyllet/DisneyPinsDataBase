@@ -100,7 +100,8 @@ router.get('/api/pins', (req, res) => {
         type_id: null,
         series_id: null,
         park_id: null,
-        country_id: null
+        country_id: null,
+        name_includes: null
     }
 
     try {
@@ -177,11 +178,14 @@ router.get('/api/pins', (req, res) => {
             else if(country_id < 1) return returnError(res, 400, 'invalid_country_id', 'country_id parameter must be greater than or equal to 1', params)
             else params.country_id = country_id
         }
+
+        let name_includes = req.header('name_includes')
+        if(name_includes && (name_includes.length > 0)) params.name_includes = name_includes
     } catch (e) {
         return returnError(res, 500, 'parameters_error', 'an error occurred while processing parameters', params)
     }
 
-    db_pins.getPinsList(params.limit, params.offset, params.from_release_date, params.until_release_date, params.min_edition_number, params.max_edition_number, params.type_id, params.series_id, params.park_id, params.country_id).then(result => {
+    db_pins.getPinsList(params.limit, params.offset, params.from_release_date, params.until_release_date, params.min_edition_number, params.max_edition_number, params.type_id, params.series_id, params.park_id, params.country_id, params.name_includes).then(result => {
         res.json({
             parameters: params,
             nb_result: (result) ? result.length : 0,
@@ -212,6 +216,82 @@ router.get('/api/series/:id', (req, res) => {
             }
         })
     })
+})
+
+/* API GET - Pins list */
+router.get('/api/series', (req, res) => {
+    let params = {
+        limit: 50,
+        offset: 0,
+        min_nb_pins: null,
+        max_nb_pins: null,
+        park_id: null,
+        country_id: null,
+        name_includes: null
+    }
+
+    try {
+        let limit = req.header('limit')
+        if(limit) {
+            limit = Number(limit)
+            if(!Number.isInteger(limit)) return returnError(res, 400, 'invalid_limit', 'limit parameter must be an integer', params)
+            else if(limit < 1) return returnError(res, 400, 'invalid_limit', 'limit parameter must be greater than or equal to 1', params)
+            else params.limit = limit
+        }
+
+        let offset = req.header('offset')
+        if(offset) {
+            offset = Number(offset)
+            if(!Number.isInteger(offset)) return returnError(res, 400, 'invalid_offset', 'offset parameter must be an integer', params)
+            else if(offset < 0) return returnError(res, 400, 'invalid_offset', 'offset parameter must be greater than or equal to 0', params)
+            else params.offset = offset
+        }
+
+        let min_nb_pins = req.header('min_nb_pins')
+        if(min_nb_pins) {
+            min_nb_pins = Number(min_nb_pins)
+            if(!Number.isInteger(min_nb_pins)) return returnError(res, 400, 'invalid_min_nb_pins', 'min_nb_pins parameter must be an integer', params)
+            else if(min_nb_pins < 0) return returnError(res, 400, 'invalid_min_nb_pins', 'min_nb_pins parameter must be greater than or equal to 0', params)
+            else params.min_nb_pins = min_nb_pins
+        }
+
+        let max_nb_pins = req.header('max_nb_pins')
+        if(max_nb_pins) {
+            max_nb_pins = Number(max_nb_pins)
+            if(!Number.isInteger(max_nb_pins)) return returnError(res, 400, 'invalid_max_nb_pins', 'max_nb_pins parameter must be an integer', params)
+            else if(max_nb_pins < 0) return returnError(res, 400, 'invalid_max_nb_pins', 'max_nb_pins parameter must be greater than or equal to 0', params)
+            else params.max_nb_pins = max_nb_pins
+        }
+
+        let park_id = req.header('park_id')
+        if(park_id) {
+            park_id = Number(park_id)
+            if(!Number.isInteger(park_id)) return returnError(res, 400, 'invalid_park_id', 'park_id parameter must be an integer', params)
+            else if(park_id < 1) return returnError(res, 400, 'invalid_park_id', 'park_id parameter must be greater than or equal to 1', params)
+            else params.park_id = park_id
+        }
+
+        let country_id = req.header('country_id')
+        if(country_id && !park_id) {
+            country_id = Number(country_id)
+            if(!Number.isInteger(country_id)) return returnError(res, 400, 'invalid_country_id', 'country_id parameter must be an integer', params)
+            else if(country_id < 1) return returnError(res, 400, 'invalid_country_id', 'country_id parameter must be greater than or equal to 1', params)
+            else params.country_id = country_id
+        }
+
+        let name_includes = req.header('name_includes')
+        if(name_includes && (name_includes.length > 0)) params.name_includes = name_includes
+    } catch (e) {
+        return returnError(res, 500, 'parameters_error', 'an error occurred while processing parameters', params)
+    }
+
+    db_series.getSeriesList(params.limit, params.offset, params.min_nb_pins, params.max_nb_pins, params.park_id, params.country_id, params.name_includes).then(result => {
+        res.json({
+            parameters: params,
+            nb_result: (result) ? result.length : 0,
+            result: (result) ? result : []
+        })
+    }).catch(() => returnError(res, 500, "database_error", "an error occurred during the request to the database", params))
 })
 
 /* - - - - - Character - - - - - */
