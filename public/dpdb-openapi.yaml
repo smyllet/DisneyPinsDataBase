@@ -354,9 +354,29 @@ paths:
                   parameters:
                     type: object
                     properties:
-                      pins_id:
-                        type: string
+                      limit:
+                        type: integer
                         minimum: 1
+                      offset:
+                        type: integer
+                      from_release_date:
+                        type: string
+                      until_release_date:
+                        type: string
+                      min_edition_number:
+                        type: integer
+                      max_edition_number:
+                        type: integer
+                      type_id:
+                        type: integer
+                      series_id:
+                        type: integer
+                      park_id:
+                        type: integer
+                      country_id:
+                        type: integer
+                      name_includes:
+                        type: string
                   nb_result:
                     type: integer
                   result:
@@ -393,29 +413,9 @@ paths:
                   parameters:
                     type: object
                     properties:
-                      limit:
-                        type: integer
-                        minimum: 1
-                      offset:
-                        type: integer
-                      from_release_date:
-                        type: string
-                      until_release_date:
-                        type: string
-                      min_edition_number:
-                        type: integer
-                      max_edition_number:
-                        type: integer
-                      type_id:
-                        type: integer
                       series_id:
-                        type: integer
-                      park_id:
-                        type: integer
-                      country_id:
-                        type: integer
-                      name_includes:
                         type: string
+                        minimum: 1
                   result:
                     $ref: '#/components/schemas/series'
         '400':
