@@ -1,7 +1,7 @@
 const db_model = require('./db')
 const {QueryTypes} = require("sequelize");
 
-exports.getSeriesList = async () => {
+exports.getShortSeriesList = async () => {
     let result = null
     let database = db_model.getDatabase()
 

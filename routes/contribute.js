@@ -36,7 +36,7 @@ router.get('/contribute/autocomplete', async function(req, res) {
     // Rediriger les utilisateur non contributeur à la page d'accueil
     if(!req.session.user.contributor) return res.status(403).send()
 
-    let series = await db_series.getSeriesList()
+    let series = await db_series.getShortSeriesList()
     let attractions = await db_attraction.getAttractionList()
     let personnages = await db_personnage.getCharactersList()
     let type = await db_type.getTypeList()
